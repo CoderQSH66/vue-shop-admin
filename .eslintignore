@@ -1,0 +1,13 @@
+#.eslintignore
+dist
+node_modules
+public
+.husky
+.vscode
+.idea
+*.sh
+*.md
+
+.eslintrc.cjs
+.prettierrc.json
+.stylelintrc.cjs
