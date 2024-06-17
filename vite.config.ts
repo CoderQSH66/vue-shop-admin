@@ -46,7 +46,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://apis.juhe.cn',
+        target: 'http://v.juhe.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }

@@ -33,12 +33,10 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     // 禁用依赖检测规则
     'import/no-extraneous-dependencies': 'off',
+    'no-param-reassign': 'off',
+    'no-nested-ternary': 'off',
     // 对导入文件后缀的检测规则
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' }
-    ],
+    'import/extensions': ['error', 'ignorePackages', { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' }],
     // 导入模块的顺序规则
     'import/order': [
       'error',
