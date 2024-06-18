@@ -12,8 +12,7 @@ class Request {
   private instance: AxiosInstance
 
   private defaultConfig: AxiosRequestConfig = {
-    timeout: 6000,
-    baseURL: '/api'
+    timeout: 6000
   }
 
   constructor(public config?: AxiosRequestConfig) {
@@ -121,6 +120,7 @@ class Request {
   }
 }
 const instance = new Request({
-  timeout: 1000
+  timeout: 1000,
+  baseURL: '/api'
 })
 export default instance

@@ -1,5 +1,6 @@
-import './assets/main.css'
-
+/* eslint-disable import/no-unresolved */
+import '@/assets/main.css'
+import 'virtual:uno.css'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 

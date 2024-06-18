@@ -37,6 +37,7 @@ module.exports = {
     'no-descending-specificity': null,
     // 'number-leading-zero': null,
     // 'declaration-block-no-redundant-longhand-properties': null,
-    'font-family-no-missing-generic-family-keyword': null
+    'font-family-no-missing-generic-family-keyword': null,
+    'no-empty-source': null
   }
 }

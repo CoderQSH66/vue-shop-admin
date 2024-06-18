@@ -2,6 +2,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { fileURLToPath, URL } from 'node:url'
 // 自动导入API
+import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 // 自动导入组件
@@ -31,7 +32,8 @@ export default defineConfig({
       ],
       // 指定在types文件中
       dts: './types/components.d.ts'
-    })
+    }),
+    UnoCSS()
     // 自动导入样式
     // createStyleImportPlugin({
     //   resolves: [AntdResolve()]
