@@ -5,6 +5,8 @@
 import { message as $message } from 'ant-design-vue'
 import axios from 'axios'
 
+import { local } from '@/utils/Storage'
+
 import type { RequestResopnse, InterceptorsRequestConfig } from './types'
 import type { AxiosRequestConfig, AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
 
@@ -15,6 +17,8 @@ class Request {
     timeout: 6000
   }
 
+  private UNKNOWN_ERROR = '未知错误'
+
   constructor(public config?: AxiosRequestConfig) {
     const newConfig = Object.assign(this.defaultConfig, this.config)
     // 创建axios实例
@@ -23,6 +27,7 @@ class Request {
     // 添加全局请求拦截器
     this.instance.interceptors.request.use(
       (_config: InternalAxiosRequestConfig) => {
+        local.get('i-token') && (_config.headers.token = local.get('i-token'))
         return _config
       },
       (error: any) => {
@@ -33,17 +38,17 @@ class Request {
     // 添加全局响应拦截器
     this.instance.interceptors.response.use(
       (response: AxiosResponse<RequestResopnse>) => {
-        console.log(response)
-        const { data, status } = response
+        const { data } = response
 
-        if (data.error_code === 10001) {
-          $message.error(data.reason)
-          return Promise.reject(data?.reason)
+        if (data.errorCode && data.errorCode !== 200) {
+          $message.error(data.msg || this.UNKNOWN_ERROR)
+          return Promise.reject(data.msg)
         }
+        $message.success(data.msg)
         return response
       },
       (error: any) => {
-        console.log(error)
+        $message.error(error.message)
         return Promise.reject(error)
       }
     )

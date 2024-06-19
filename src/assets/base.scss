@@ -1,5 +1,6 @@
 :root {
   --primary-color: #0891b2;
+  --primary-bary-color: #bfbfbf;
   --font-size-base: 16px;
 }
 
@@ -16,17 +17,4 @@ body {
 html,
 body {
   height: 100%;
-}
-
-.ant-btn-primary {
-  background-color: var(--primary-color);
-
-  &:not(:disabled):active,
-  &:not(:disabled):hover {
-    background-color: var(--primary-color);
-  }
-}
-
-.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
-  border-color: var(--primary-color);
 }
