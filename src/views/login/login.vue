@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="login">
     <a-row h-full>
       <a-col :xs="24" :sm="24" :md="15">
@@ -62,7 +62,6 @@
 <script setup lang="ts">
   import { reactive, ref, toRefs } from 'vue'
 
-  // eslint-disable-next-line import/no-cycle
   import useLoginStore from '@/stores/login'
 
   import type { Rule, FormInstance } from 'ant-design-vue/es/form'
@@ -111,6 +110,7 @@
       onLogin()
     }
   })
+  window.addEventListener('resize', () => {})
 </script>
 
 <style lang="scss" scoped>
@@ -161,4 +161,4 @@
       }
     }
   }
-</style>
+</style> -->

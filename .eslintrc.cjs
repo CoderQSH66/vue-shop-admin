@@ -14,6 +14,15 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest'
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx', '*.vue'],
+      rules: {
+        // 解决 ts 全局类型定义后，eslint报错的问题
+        'no-undef': 'off'
+      }
+    }
+  ],
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.ts', '.tsx']

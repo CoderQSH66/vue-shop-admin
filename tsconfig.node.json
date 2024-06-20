@@ -6,7 +6,8 @@
     "cypress.config.*",
     "nightwatch.conf.*",
     "playwright.config.*",
-    "types"
+    "types",
+    "src"
   ],
   "compilerOptions": {
     "composite": true,

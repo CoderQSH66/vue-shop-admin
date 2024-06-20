@@ -10,6 +10,7 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 // antdesign无需通过插件自动引入样式
 // import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -29,7 +30,10 @@ export default defineConfig({
         })
       ],
       // 指定在types文件中
-      dts: './types/components.d.ts'
+      dts: './types/components.d.ts',
+      extensions: ['vue'],
+      // 导入自己的组件
+      dirs: ['src/views/**/*', 'src/components/**/*']
     }),
     UnoCSS()
     // 自动导入样式

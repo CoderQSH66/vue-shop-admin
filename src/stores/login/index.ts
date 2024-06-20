@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import { login, getUserInfo } from '@/api/module/login'
+import { login, getUserInfo } from '@/api'
 import router from '@/router'
 import { local } from '@/utils/Storage'
 
@@ -13,7 +13,7 @@ const useLoginStore = defineStore('login', () => {
   const userInfo = ref<IUserInfo>(local.get('userInfo') ?? {})
 
   /** actions */
-  const asyncFetchLogin = async (loginInfo: ILoginRequest): Promise<boolean> => {
+  const asyncFetchLogin = async (loginInfo: ILoginRequest): Promise<any> => {
     loading.value = true
     const _login = await login(loginInfo)
     local.set('i-token', _login.data.token)
