@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="login">
     <a-row h-full>
       <a-col :xs="24" :sm="24" :md="15">
@@ -161,4 +161,4 @@
       }
     }
   }
-</style> -->
+</style>

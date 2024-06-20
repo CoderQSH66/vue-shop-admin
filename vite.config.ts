@@ -33,7 +33,7 @@ export default defineConfig({
       dts: './types/components.d.ts',
       extensions: ['vue'],
       // 导入自己的组件
-      dirs: ['src/views/**/*', 'src/components/**/*']
+      dirs: ['src/views/**/*.vue', 'src/components/**/*.vue']
     }),
     UnoCSS()
     // 自动导入样式

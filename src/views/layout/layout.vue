@@ -30,13 +30,13 @@
       height: 100%;
 
       .a-sider {
-        background-color: var(--primary-color);
+        background-color: var(--primary-bary-color);
       }
 
       .a-layout_main {
         .a-header {
           padding-inline: 20px;
-          background-color: var(--primary-bary-color);
+          background-color: var(--primary-color);
         }
 
         .a-content {
