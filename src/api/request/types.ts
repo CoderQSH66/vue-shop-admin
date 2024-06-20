@@ -4,9 +4,9 @@ import type { AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } fr
  * 通用请求响应接口类型
  */
 export interface RequestResopnse<T = any> {
-  error_code: number
-  result: T
-  reason: string
+  errorCode?: number
+  data: T
+  msg: string
 }
 export interface InterceptorsRequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
   /** 添加单个请求拦截器 */

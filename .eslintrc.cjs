@@ -35,8 +35,19 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'no-param-reassign': 'off',
     'no-nested-ternary': 'off',
+    'no-shadow': 'off',
     // 对导入文件后缀的检测规则
     'import/extensions': ['error', 'ignorePackages', { js: 'never', jsx: 'never', ts: 'never', tsx: 'never' }],
+    'no-unused-expressions': [
+      'error',
+      {
+        allowTernary: true,
+        allowShortCircuit: true
+      }
+    ],
+    'no-underscore-dangle': 'off',
+    'no-use-before-define': 'off',
+    'import/no-cycle': 'off',
     // 导入模块的顺序规则
     'import/order': [
       'error',

@@ -38,6 +38,12 @@ module.exports = {
     // 'number-leading-zero': null,
     // 'declaration-block-no-redundant-longhand-properties': null,
     'font-family-no-missing-generic-family-keyword': null,
-    'no-empty-source': null
+    'no-empty-source': null,
+    'at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['tailwind', 'apply', 'variants', 'responsive', 'screen']
+      }
+    ]
   }
 }

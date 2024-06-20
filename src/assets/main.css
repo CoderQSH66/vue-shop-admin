@@ -1,2 +1,19 @@
 @import url('@csstools/normalize.css');
 @import url('./base.scss');
+
+.ant-btn-primary {
+  background-color: var(--primary-color);
+
+  &:not(:disabled):active,
+  &:not(:disabled):hover {
+    background-color: var(--primary-color);
+  }
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: var(--primary-color);
+}
+
+#nprogress .bar {
+  background-color: var(--primary-color) !important;
+}

@@ -10,13 +10,11 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 // antdesign无需通过插件自动引入样式
 // import { createStyleImportPlugin, AntdResolve } from 'vite-plugin-style-import'
-import VueDevTools from 'vite-plugin-vue-devtools'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    VueDevTools(),
     // 自动导入API
     AutoImport({
       resolvers: [AntDesignVueResolver()],
@@ -48,7 +46,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/api': {
-        target: 'http://v.juhe.cn',
+        target: 'http://ceshi13.dishait.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
