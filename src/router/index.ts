@@ -35,7 +35,7 @@ const whitelist = ['login', 'NotFound']
 // 全局路由守卫
 router.beforeEach((to, from, next) => {
   NProgress.start()
-  if (!whitelist.includes(to.name)) {
+  if (!whitelist.includes(to.name as string)) {
     const token = local.get('i-token')
     if (!token) {
       next({ path: '/login' })

@@ -3,7 +3,7 @@
  */
 import instance from '@/api/request'
 
-import type { ILoginRequest, IUserInfo } from '@/types/login'
+import type { ILoginRequest, IUserInfo, IUpdatePassword } from '@/types/login'
 
 /**
  * 登录接口
@@ -27,5 +27,17 @@ export const getUserInfo = () => {
     method: 'post',
     isRequestData: true,
     requestType: 'urlencoded'
+  })
+}
+
+/**
+ * 修改密码接口
+ */
+export const changePassword = (data: IUpdatePassword) => {
+  return instance.request({
+    url: '/admin/updatepassword',
+    method: 'post',
+    data,
+    isRequestData: true
   })
 }

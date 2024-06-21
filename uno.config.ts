@@ -20,7 +20,8 @@ export default defineConfig({
       scale: 1.2,
       warn: true,
       collections: {
-        ant: () => import('@iconify-json/ant-design/icons.json').then((i) => i.default)
+        ant: () => import('@iconify-json/ant-design/icons.json').then((i) => i.default),
+        ep: () => import('@iconify-json/ep/icons.json').then((i) => i.default)
       }
     })
   ],

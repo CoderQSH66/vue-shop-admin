@@ -48,6 +48,7 @@ class Request {
         return response
       },
       (error: any) => {
+        console.log(error)
         $message.error(error.message)
         return Promise.reject(error)
       }

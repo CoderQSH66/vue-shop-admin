@@ -5,10 +5,13 @@ import { createApp } from 'vue'
 
 import App from './App.vue'
 import router from './router'
-import pinia from './stores'
+import usePinia from './stores'
+import registerAntIcons from './utils/registerAntIcon'
+import registerEpIcons from './utils/registerEpIcon'
 
 const app = createApp(App)
-
-app.use(pinia)
+app.use(registerAntIcons)
+app.use(registerEpIcons)
+app.use(usePinia)
 app.use(router)
 app.mount('#app')

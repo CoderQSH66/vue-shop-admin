@@ -19,7 +19,7 @@
       <div class="avatar">
         <a-dropdown arrow placement="bottom">
           <div class="info flex-center">
-            <a-avatar :size="36" :src="userInfo.avatar">
+            <a-avatar :size="38" :src="userInfo.avatar">
               <template #icon>
                 <div class="i-ant:user-outlined w-full h-full text-blueGray"></div>
               </template>
@@ -28,7 +28,7 @@
           </div>
           <template #overlay>
             <a-menu class="header-dropdown">
-              <a-menu-item class="header-dropdown__item" @click="updatePassword">修改密码</a-menu-item>
+              <a-menu-item class="header-dropdown__item" @click="isOpenDrawer = true">修改密码</a-menu-item>
               <a-menu-item class="header-dropdown__item" @click="logout">退出登录</a-menu-item>
             </a-menu>
           </template>
@@ -36,11 +36,47 @@
       </div>
     </div>
   </div>
-  <a-drawer :open="isOpenDrawer" class="custom-class"></a-drawer>
+  <a-drawer
+    :open="isOpenDrawer"
+    title="修改密码"
+    class="drawer-custom-class"
+    placement="right"
+    @close="isOpenDrawer = false"
+  >
+    <a-form :model="formState" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
+      <a-form-item label="旧密码" required>
+        <a-input v-model:value="formState.oldpassword" placeholder="请输入旧密码" allow-clear size="large">
+          <template #prefix>
+            <i class="i-ant-user-outlined w-20 h-20"></i>
+          </template>
+        </a-input>
+      </a-form-item>
+      <a-form-item label="新密码" required>
+        <a-input v-model:value="formState.password" placeholder="请输入新密码" allow-clear size="large">
+          <template #prefix>
+            <i class="i-ant-setting-outlined w-20 h-20"></i>
+          </template>
+        </a-input>
+      </a-form-item>
+      <a-form-item label="再次输入新密码" required>
+        <a-input v-model:value="formState.repassword" placeholder="请再次输入新密码" allow-clear size="large">
+          <template #prefix>
+            <i class="i-ant-setting-outlined w-20 h-20"></i>
+          </template>
+        </a-input>
+      </a-form-item>
+      <a-form-item>
+        <div class="w-full opreate flex justify-around">
+          <a-button type="primary" class="w-100" @click="updatePassword">确定</a-button>
+          <a-button type="primary" danger class="w-100" @click="isOpenDrawer = false">取消</a-button>
+        </div>
+      </a-form-item>
+    </a-form>
+  </a-drawer>
 </template>
 
 <script setup lang="ts">
-  import { ref, toRefs } from 'vue'
+  import { ref, toRefs, reactive } from 'vue'
   import { useRouter } from 'vue-router'
 
   import useLoginStore from '@/stores/login'
@@ -52,6 +88,12 @@
   const isCollapsible = ref<boolean>(false)
   const isFull = ref<boolean>(false)
   const isOpenDrawer = ref<boolean>(false)
+  const formState = reactive({
+    oldpassword: '',
+    password: '',
+    repassword: ''
+  })
+
   /** 全屏 */
   const fullscreen = () => {
     // DOM对象的一个属性:可以用来判断当前是不是全屏模式[全屏:true,不是全屏:false]
@@ -69,8 +111,12 @@
   }
 
   /** 修改密码 */
-  const updatePassword = () => {
-    isOpenDrawer.value = true
+  const updatePassword = async () => {
+    try {
+      await loginStore.asyncFetchChangePassword(formState)
+    } catch (err) {
+      isOpenDrawer.value = false
+    }
   }
 
   /** 退出登录 */
@@ -78,6 +124,10 @@
     local.clear()
     router.push('/login')
   }
+
+  defineExpose({
+    isCollapsible
+  })
 </script>
 
 <style lang="scss" scoped>

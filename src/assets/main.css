@@ -17,3 +17,14 @@
 #nprogress .bar {
   background-color: var(--primary-color) !important;
 }
+
+.side {
+  .ant-menu {
+    width: 100% !important;
+
+    .ant-menu-item {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

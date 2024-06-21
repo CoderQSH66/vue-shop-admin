@@ -15,3 +15,8 @@ export interface IUserInfo {
   menus: any
   ruleNames: string[]
 }
+export interface IUpdatePassword {
+  oldpassword: string
+  password: string
+  repassword: string
+}

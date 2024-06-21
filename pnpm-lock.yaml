@@ -14,6 +14,9 @@ importers:
       '@csstools/normalize.css':
         specifier: ^12.1.1
         version: 12.1.1
+      '@element-plus/icons-vue':
+        specifier: ^2.3.1
+        version: 2.3.1(vue@3.4.29(typescript@5.4.5))
       '@types/underscore':
         specifier: ^1.11.15
         version: 1.11.15
@@ -54,6 +57,9 @@ importers:
       '@iconify-json/ant-design':
         specifier: ^1.1.16
         version: 1.1.16
+      '@iconify-json/ep':
+        specifier: ^1.1.15
+        version: 1.1.15
       '@rushstack/eslint-patch':
         specifier: ^1.8.0
         version: 1.10.3
@@ -63,6 +69,9 @@ importers:
       '@types/node':
         specifier: ^20.14.6
         version: 20.14.6
+      '@types/nprogress':
+        specifier: ^0.2.3
+        version: 0.2.3
       '@unocss/preset-rem-to-px':
         specifier: ^0.61.0
         version: 0.61.0
@@ -454,6 +463,11 @@ packages:
   '@dual-bundle/import-meta-resolve@4.1.0':
     resolution: {integrity: sha512-+nxncfwHM5SgAtrVzgpzJOI1ol0PkumhVo469KCf9lUi21IGcY90G98VuHm9VRrUypmAzawAHO9bs6hqeADaVg==}
 
+  '@element-plus/icons-vue@2.3.1':
+    resolution: {integrity: sha512-XxVUZv48RZAd87ucGS48jPf6pKu0yV5UCg9f4FFwtrYxXOwWuVJo6wOvSLKEoMQKjv8GsX/mhP6UsC1lRwbUWg==}
+    peerDependencies:
+      vue: ^3.2.0
+
   '@emotion/hash@0.9.1':
     resolution: {integrity: sha512-gJB6HLm5rYwSLI6PQa+X1t5CFGrv1J1TWG+sOyMCeKz2ojaj6Fnl/rZEspogG+cvqbt4AE/2eIyD2QfLKTBNlQ==}
 
@@ -632,6 +646,9 @@ packages:
   '@iconify-json/ant-design@1.1.16':
     resolution: {integrity: sha512-DJ2BDf/XNuYu0p0zDQh3RM8FkPsp9GwZ7WytkVwU7cn73AgpNfOGc2P5zvZzgejx5YK0otG9MYi/cHI4qvfnVQ==}
 
+  '@iconify-json/ep@1.1.15':
+    resolution: {integrity: sha512-96JBJQrJhxYy+j+KE5lqyE+Y6O+06fVUdMaHJ1Rb9+bbOjI1tw6EwYl9H4SB6Hkf7zB80VX6GgG0yH0Z0c8K1Q==}
+
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
@@ -796,6 +813,9 @@ packages:
 
   '@types/node@20.14.6':
     resolution: {integrity: sha512-JbA0XIJPL1IiNnU7PFxDXyfAwcwVVrOoqyzzyQTyMeVhBzkJVMSkC1LlVsRQ2lpqiY4n6Bb9oCS6lzDKVQxbZw==}
+
+  '@types/nprogress@0.2.3':
+    resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
 
   '@types/underscore@1.11.15':
     resolution: {integrity: sha512-HP38xE+GuWGlbSRq9WrZkousaQ7dragtZCruBVMi0oX1migFZavZ3OROKHSkNp/9ouq82zrWtZpg18jFnVN96g==}
@@ -3656,6 +3676,10 @@ snapshots:
 
   '@dual-bundle/import-meta-resolve@4.1.0': {}
 
+  '@element-plus/icons-vue@2.3.1(vue@3.4.29(typescript@5.4.5))':
+    dependencies:
+      vue: 3.4.29(typescript@5.4.5)
+
   '@emotion/hash@0.9.1': {}
 
   '@emotion/unitless@0.8.1': {}
@@ -3765,6 +3789,10 @@ snapshots:
   '@humanwhocodes/object-schema@2.0.3': {}
 
   '@iconify-json/ant-design@1.1.16':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/ep@1.1.15':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -3908,6 +3936,8 @@ snapshots:
   '@types/node@20.14.6':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/nprogress@0.2.3': {}
 
   '@types/underscore@1.11.15': {}
 
