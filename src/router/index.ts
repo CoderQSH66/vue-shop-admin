@@ -1,12 +1,12 @@
 import 'nprogress/nprogress.css'
 import NProgress from 'nprogress'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 import { local } from '@/utils/Storage'
 
 NProgress.configure({ showSpinner: true, color: '#df1234' })
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',

@@ -20,6 +20,9 @@ importers:
       '@types/underscore':
         specifier: ^1.11.15
         version: 1.11.15
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
       ant-design-vue:
         specifier: 4.x
         version: 4.2.3(vue@3.4.29(typescript@5.4.5))
@@ -31,7 +34,6 @@ importers:
         version: 0.2.0
       pinia:
         specifier: ^2.1.7
-<<<<<<< HEAD
         version: 2.1.7(typescript@5.4.5)(vue@3.4.29(typescript@5.4.5))
       pinia-plugin-persistedstate:
         specifier: ^3.2.1
@@ -42,12 +44,6 @@ importers:
       underscore:
         specifier: ^1.13.6
         version: 1.13.6
-=======
-        version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
-      pinia-plugin-persistedstate:
-        specifier: ^3.2.1
-        version: 3.2.1(pinia@2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5)))
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
       vue:
         specifier: ^3.4.21
         version: 3.4.29(typescript@5.4.5)
@@ -183,11 +179,7 @@ importers:
         version: 5.3.1(@types/node@20.14.6)(less@4.2.0)(sass@1.77.6)
       vite-plugin-style-import:
         specifier: ^2.0.0
-<<<<<<< HEAD
         version: 2.0.0(vite@5.3.1(@types/node@20.14.6)(less@4.2.0)(sass@1.77.6))
-=======
-        version: 2.0.0(vite@5.2.13(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5))
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
       vue-tsc:
         specifier: ^2.0.11
         version: 2.0.21(typescript@5.4.5)
@@ -1099,6 +1091,9 @@ packages:
 
   ajv@8.16.0:
     resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
+
+  animate.css@4.1.1:
+    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
 
   ansi-escapes@6.2.1:
     resolution: {integrity: sha512-4nJ3yixlEthEJ9Rk4vPcdBRkZvQZlYyu8j4/Mqz5sgIkddmEnH2Yj2ZrnP9S3tQOvSNRUIgVNF/1yPpRAGNRig==}
@@ -2348,13 +2343,10 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-<<<<<<< HEAD
   minipass@7.1.2:
     resolution: {integrity: sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-=======
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
   mlly@1.7.1:
     resolution: {integrity: sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==}
 
@@ -3146,13 +3138,8 @@ packages:
     peerDependencies:
       vite: '>=2.0.0'
 
-<<<<<<< HEAD
   vite@5.3.1:
     resolution: {integrity: sha512-XBmSKRLXLxiaPYamLv3/hnP/KXDai1NDexN0FpkTaZXTfycHvkRHoenpgl/fvuK/kPbB6xAgoyiryAhQNxYmAQ==}
-=======
-  vite@5.2.13:
-    resolution: {integrity: sha512-SSq1noJfY9pR3I1TUENL3rQYDQCFqgD+lM6fTRAM8Nv6Lsg5hDLaXkjETVeBt+7vZBCMoibD+6IWnT2mJ+Zb/A==}
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4373,6 +4360,8 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
       uri-js: 4.4.1
+
+  animate.css@4.1.1: {}
 
   ansi-escapes@6.2.1: {}
 
@@ -5749,11 +5738,8 @@ snapshots:
 
   minimist@1.2.8: {}
 
-<<<<<<< HEAD
   minipass@7.1.2: {}
 
-=======
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
   mlly@1.7.1:
     dependencies:
       acorn: 8.12.0
@@ -5963,19 +5949,11 @@ snapshots:
   pify@4.0.1:
     optional: true
 
-<<<<<<< HEAD
   pinia-plugin-persistedstate@3.2.1(pinia@2.1.7(typescript@5.4.5)(vue@3.4.29(typescript@5.4.5))):
     dependencies:
       pinia: 2.1.7(typescript@5.4.5)(vue@3.4.29(typescript@5.4.5))
 
   pinia@2.1.7(typescript@5.4.5)(vue@3.4.29(typescript@5.4.5)):
-=======
-  pinia-plugin-persistedstate@3.2.1(pinia@2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))):
-    dependencies:
-      pinia: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
-
-  pinia@2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5)):
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
     dependencies:
       '@vue/devtools-api': 6.6.3
       vue: 3.4.29(typescript@5.4.5)
@@ -6633,11 +6611,7 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-<<<<<<< HEAD
   vite-plugin-style-import@2.0.0(vite@5.3.1(@types/node@20.14.6)(less@4.2.0)(sass@1.77.6)):
-=======
-  vite-plugin-style-import@2.0.0(vite@5.2.13(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5)):
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
     dependencies:
       '@rollup/pluginutils': 4.2.1
       change-case: 4.1.2
@@ -6646,19 +6620,11 @@ snapshots:
       fs-extra: 10.1.0
       magic-string: 0.25.9
       pathe: 0.2.0
-<<<<<<< HEAD
       vite: 5.3.1(@types/node@20.14.6)(less@4.2.0)(sass@1.77.6)
 
   vite@5.3.1(@types/node@20.14.6)(less@4.2.0)(sass@1.77.6):
     dependencies:
       esbuild: 0.21.5
-=======
-      vite: 5.2.13(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5)
-
-  vite@5.2.13(@types/node@20.14.2)(less@4.2.0)(sass@1.77.5):
-    dependencies:
-      esbuild: 0.20.2
->>>>>>> a0a1f2001d979c1200a21530c80520b0b811d5cd
       postcss: 8.4.38
       rollup: 4.18.0
     optionalDependencies:

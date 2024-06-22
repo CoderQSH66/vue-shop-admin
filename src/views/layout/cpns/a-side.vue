@@ -1,8 +1,8 @@
 <template>
   <div class="side">
     <a-menu
-      v-model:openKeys="state.openKeys"
-      v-model:selectedKeys="state.selectedKeys"
+      v-model:openKeys="openKeys"
+      v-model:selectedKeys="selectedKeys"
       mode="inline"
       theme="light"
       class="a-menu"
@@ -23,7 +23,7 @@
             <template #icon>
               <div class="icon w-20 h-20"><component :is="menu.icon"></component></div>
             </template>
-            <a-side :menus="menu.child"></a-side>
+            <a-side-child :menus="menu.child"></a-side-child>
           </a-sub-menu>
         </template>
       </template>
@@ -32,18 +32,44 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive, toRefs } from 'vue'
+  import { computed, toRefs, watch } from 'vue'
+  import { useRoute } from 'vue-router'
 
   import router from '@/router'
+  import { local } from '@/utils/Storage'
+
+  import ASideChild from './a-side-child.vue'
 
   interface IPropsType {
     menus: any[]
   }
   const props = defineProps<IPropsType>()
   const { menus } = toRefs(props)
-  const state = reactive({
-    selectedKeys: ['6'],
-    openKeys: ['6']
+  const route = useRoute()
+
+  /** 根据路由切换菜单激活 */
+  const selectedKeys = computed({
+    get() {
+      return [route.path]
+    },
+    set() {}
+  })
+
+  /** 根据路由切换侧边栏展开 */
+  const openKeys = computed({
+    get() {
+      const openKeysList: string[] = []
+      menus.value.forEach((menu: any) => {
+        const openKey = menu.child.find((item: any) => {
+          return item.frontpath === route.path
+        })
+        if (openKey) {
+          openKeysList.push(String(menu.id))
+        }
+      })
+      return openKeysList
+    },
+    set() {}
   })
   // const items = reactive([
   //   {
@@ -87,15 +113,18 @@
   // ])
 
   const onClick = (e: any) => {
-    state.selectedKeys = e.keyPath
-    // console.log(state)
     // console.log(e)
+    openKeys.value = local.get('openKeys') ?? []
     router.push(e.key)
   }
   const onOpenChange: any = (openKeys: string[]) => {
-    // state.openKeys = [openKeys.at(-1)]
-    // console.log(state)
+    // console.log(openKeys)
+    local.set('openKeys', openKeys)
   }
+  /** 侦听路由变化 */
+  watch(route, (_, newValue) => {
+    // console.log(openKeys.value)
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -109,7 +138,7 @@
         height: 64px !important;
 
         &:hover {
-          color: var(--primary-color);
+          color: var(--primary-color) !important;
           background-color: #e6f4ff;
         }
       }
@@ -118,6 +147,11 @@
         display: flex;
         align-items: center;
         height: 64px !important;
+
+        &:hover {
+          color: #e6f4ff !important;
+          background-color: var(--primary-color);
+        }
       }
 
       .icon {

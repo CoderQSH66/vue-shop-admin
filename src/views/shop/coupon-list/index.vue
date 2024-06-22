@@ -1,5 +1,7 @@
 <template>
-  <div class="app">AppContent</div>
+  <div class="app">
+    <h2>优惠券管理</h2>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

@@ -126,7 +126,7 @@ class Request {
   }
 }
 const instance = new Request({
-  timeout: 1000,
+  timeout: 3000,
   baseURL: '/api'
 })
 export default instance

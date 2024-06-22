@@ -3,7 +3,6 @@
     <a-layout class="a-layout">
       <a-layout-sider class="a-sider" breakpoint="lg" collapsedWidth="64" :collapsed="isCollapsible">
         <div class="logo">LOGO</div>
-
         <a-side :menus="menus"></a-side>
       </a-layout-sider>
       <a-layout class="a-layout_main">
@@ -11,7 +10,22 @@
           <a-header ref="aheaderRef"></a-header>
         </a-layout-header>
         <a-layout-content class="a-content">
-          <router-view></router-view>
+          <a-routes></a-routes>
+          <div class="a-b">
+            <!-- 路由视图 -->
+            <router-view v-slot="{ Component }">
+              <transition
+                name="custom-classes"
+                mode="out-in"
+                enterActiveClass="animate__animated animate__fadeIn"
+                leaveActiveClass="animate__animated animate__fadeOutDown"
+              >
+                <keep-alive :max="10">
+                  <component :is="Component"></component>
+                </keep-alive>
+              </transition>
+            </router-view>
+          </div>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -24,6 +38,7 @@
   import useLoginStore from '@/stores/login'
 
   import AHeader from './cpns/a-header.vue'
+  import ARoutes from './cpns/a-routes.vue'
   import ASide from './cpns/a-side.vue'
 
   const loginStore = useLoginStore()
@@ -65,7 +80,19 @@
         }
 
         .a-content {
+          position: relative;
           padding: 20px;
+          padding-top: 0;
+          background-color: #fff;
+
+          .a-b {
+            position: absolute;
+            top: 50px;
+            bottom: 0;
+            width: 100%;
+            padding-top: 10px;
+            overflow: hidden;
+          }
         }
       }
     }

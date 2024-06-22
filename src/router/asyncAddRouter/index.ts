@@ -15,6 +15,7 @@ const getComponent = (path: string) => {
   return component
 }
 export default function asyncAddRouter(menus: any[]): void {
+  if (!menus) return
   menus.forEach((menu: any) => {
     const route: any = {
       path: menu.frontpath,
