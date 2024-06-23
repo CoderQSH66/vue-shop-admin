@@ -14,7 +14,7 @@
               class="content"
               :ref="
                 (el) => {
-                  countRefList.push(el)
+                  pushCountLish(el)
                 }
               "
             >
@@ -94,12 +94,12 @@
 </template>
 
 <script setup lang="ts">
-  import { CountUp } from 'countup.js'
-  import { reactive, toRefs, ref, onMounted, nextTick } from 'vue'
+  import { reactive, toRefs } from 'vue'
 
   import { GlobalCard } from '@/components/global-card'
   // eslint-disable-next-line import/named
   import { EBar } from '@/components/global-echart'
+  import useHomeCount from '@/hooks/useHomeCount'
   import useHomeStore from '@/stores/home'
 
   import StatusList from '../cpns/status-list.vue'
@@ -129,33 +129,9 @@
     state.active = false
   })
   homeStore.asyncGetRecentData('week')
-  const onChangeTags: any = (tag: string) => {
-    const index = timeList.findIndex((item) => item.label === tag)
-    const trueIndex = timeList.findIndex((item) => item.checked === true)
-    if (!timeList[index].checked) {
-      timeList[index].checked = true
-      timeList[trueIndex].checked = false
-      homeStore.asyncGetRecentData(tag as any)
-    }
-  }
-  const countRefList = ref<any>([])
 
-  onMounted(() => {
-    nextTick(() => {
-      countRefList.value?.forEach((item: any) => {
-        console.log(item)
-      })
-    })
-
-    // countRefList.value?.forEach((item) => {
-    //   console.log('1111111, ', item)
-    //   // const countAnimate = new CountUp(item, 51, {
-    //   //   useGrouping: true, // 开启逗号,
-    //   //   duration: 2
-    //   // })
-    //   // countAnimate.start()
-    // })
-  })
+  // hooks
+  const { onChangeTags, pushCountLish } = useHomeCount(timeList)
 </script>
 
 <style lang="scss" scoped>
