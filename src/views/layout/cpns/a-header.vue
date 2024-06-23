@@ -8,7 +8,7 @@
         </div>
       </a-tooltip>
       <a-tooltip title="刷新">
-        <div class="w-25 h-25 m-x-10 i-ant:sync-outlined"></div>
+        <div @click="onRefresh" class="w-25 h-25 m-x-10 i-ant:sync-outlined"></div>
       </a-tooltip>
     </div>
     <div class="right">
@@ -123,6 +123,11 @@
   const logout = () => {
     local.clear()
     router.push('/login')
+  }
+
+  /** 刷新页面 */
+  const onRefresh = () => {
+    window.location.reload()
   }
 
   defineExpose({

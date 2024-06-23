@@ -18,6 +18,7 @@
   watch(
     () => route.path,
     () => {
+      if (route.path === '/login') return
       homeStore.addTags({
         name: route.meta.title as string,
         path: route.path

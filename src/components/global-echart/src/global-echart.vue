@@ -35,9 +35,9 @@
       myChart.resize()
     })
   })
-  onUnmounted(() => {
-    echarts.init(echartRef?.value).dispose()
-  })
+  // onUnmounted(() => {
+  //   echarts.init(echartRef?.value).dispose()
+  // })
 </script>
 
 <style lang="scss" scoped>
