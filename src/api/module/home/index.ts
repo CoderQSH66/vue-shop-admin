@@ -16,7 +16,7 @@ export const getPayData = () => {
 }
 
 /** 获取商品状态数据 */
-export const getStausData = () => {
+export const getStatusData = () => {
   return instance.request({
     url: '/admin/statistics2',
     method: 'get',
@@ -36,4 +36,9 @@ export const getRecentData = (type: ITimeType) => {
     isRequestData: true,
     requestType: 'form'
   })
+}
+
+/** 并发获取首页数据 */
+export const getIndexData = () => {
+  return Promise.all([getPayData(), getStatusData()])
 }
