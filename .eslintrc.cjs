@@ -25,7 +25,7 @@ module.exports = {
   ],
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.vue']
     },
     // 解决导入文件无法识别@的问题
     'import/resolver': {
@@ -57,6 +57,8 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-use-before-define': 'off',
     'import/no-cycle': 'off',
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
     // 导入模块的顺序规则
     'import/order': [
       'error',

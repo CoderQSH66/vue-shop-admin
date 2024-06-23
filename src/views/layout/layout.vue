@@ -87,11 +87,11 @@
 
           .a-b {
             position: absolute;
+            inset: 0;
             top: 50px;
-            bottom: 0;
             width: 100%;
-            padding-top: 10px;
-            overflow: hidden;
+            padding: 20px;
+            overflow-y: scroll;
           }
         }
       }

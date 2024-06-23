@@ -37,7 +37,7 @@
   })
 
   const callback: TabsProps['onTabScroll'] = (val) => {
-    // console.log(val)
+    console.log(val)
   }
   const onEdit: any = (targetKey: string, action: 'add' | 'remove') => {
     if (action === 'remove') {
@@ -98,7 +98,8 @@
             }
 
             .ant-tabs-tab-remove {
-              color: var(--primary-color) !important;
+              // color: var(--primary-color) !important;
+              color: #fff !important;
             }
           }
         }

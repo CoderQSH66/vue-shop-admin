@@ -23,6 +23,8 @@
     "animate.css": "^4.1.1",
     "ant-design-vue": "4.x",
     "axios": "^1.7.2",
+    "countup.js": "^2.8.0",
+    "echarts": "^5.5.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
