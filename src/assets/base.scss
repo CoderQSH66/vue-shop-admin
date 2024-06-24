@@ -9,12 +9,14 @@ body {
 }
 
 html,
-body {
+body,
+#app {
   height: 100%;
 }
 
 :root {
   --primary-color: #0891b2;
   --primary-bary-color: #bfbfbf;
+  --primary-gary-color: #f3f4f6;
   --font-size-base: 16px;
 }

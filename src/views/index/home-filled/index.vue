@@ -35,8 +35,8 @@
       <a-row :gutter="[24, 24]">
         <template v-for="(item, index) of categoryList" :key="index">
           <a-col :span="3">
-            <div class="info" @click="$router.push(item.path)">
-              <div :class="['icon', item.color]">
+            <div :class="`info ${item.color}`" @click="$router.push(item.path)">
+              <div :class="['icon']">
                 <component :is="item.icon"></component>
               </div>
               <span>{{ item.title }}</span>

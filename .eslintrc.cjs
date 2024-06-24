@@ -25,7 +25,7 @@ module.exports = {
   ],
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx', '.vue']
+      '@typescript-eslint/parser': ['.ts', '.tsx']
     },
     // 解决导入文件无法识别@的问题
     'import/resolver': {

@@ -33,6 +33,8 @@ export default function useHomeCount(timeList: any[]) {
             const countAnimate = new CountUp(item, item.textContent, {
               useGrouping: true, // 开启逗号,
               // 允许小数
+              decimal: '.',
+              decimalPlaces: 1,
               duration: 1
             })
             countAnimate.start()

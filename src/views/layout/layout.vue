@@ -86,12 +86,18 @@
           background-color: #fff;
 
           .a-b {
+            // 隐藏滚动条
+            &::-webkit-scrollbar {
+              display: none;
+            }
+
             position: absolute;
             inset: 0;
             top: 50px;
             width: 100%;
             padding: 20px;
             overflow-y: scroll;
+            background-color: var(--primary-gary-color);
           }
         }
       }

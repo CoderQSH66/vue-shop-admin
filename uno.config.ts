@@ -10,6 +10,7 @@ import { defineConfig, presetAttributify, presetUno, presetIcons } from 'unocss'
 export default defineConfig({
   presets: [
     presetAttributify(),
+    // 集成WindCSS、tailwindcss
     presetUno(),
     // 现在mt-1会转换为margin-top: 1px
     presetRemToPx({
