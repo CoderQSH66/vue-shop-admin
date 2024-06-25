@@ -28,7 +28,7 @@
     placement: 'right',
     headerStyle: () => ({ padding: '24px' })
   })
-  console.log(props)
+  // console.log(props)
   // console.log(useAttrs())
   const attrs = computed(() => {
     return {

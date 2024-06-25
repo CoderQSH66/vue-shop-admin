@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-  <global-drawer title="修改密码" :closable="false" :open="isOpenDrawer" @close="isOpenDrawer = false">
+  <!-- <global-drawer title="修改密码" :closable="false" :open="isOpenDrawer" @close="isOpenDrawer = false">
     <a-form :model="formState" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
       <a-form-item label="旧密码" required>
         <a-input v-model:value="formState.oldpassword" placeholder="请输入旧密码" allow-clear size="large">
@@ -66,16 +66,37 @@
         </div>
       </a-form-item>
     </a-form>
+  </global-drawer> -->
+  <global-drawer :open="isOpenDrawer" @close="isOpenDrawer = false">
+    <schema-form :formOptionsData="formOptionsData" :formOptions="formOptions" :formState="formState">
+      <template #operate="slotData">
+        <div class="operate w-full flex justify-around">
+          <a-button
+            type="primary"
+            @click="
+              () => {
+                console.log(slotData)
+              }
+            "
+            >确定</a-button
+          >
+          <a-button type="primary" danger>取消</a-button>
+        </div>
+      </template>
+    </schema-form>
   </global-drawer>
 </template>
 
 <script setup lang="ts">
-  import { ref, toRefs, reactive } from 'vue'
+  import { ref, toRefs, reactive, watch } from 'vue'
   import { useRouter } from 'vue-router'
 
   import { GlobalDrawer } from '@/components/global-drawer'
+  import { SchemaForm } from '@/components/schema-form'
   import useLoginStore from '@/stores/login'
   import { local } from '@/utils/Storage'
+
+  import { formOptionsData, formOptions } from '../config/updatePassword'
 
   const router = useRouter()
   const loginStore = useLoginStore()
@@ -88,6 +109,13 @@
     password: '',
     repassword: ''
   })
+  watch(
+    formState,
+    () => {
+      console.log(formState)
+    },
+    { deep: true }
+  )
   /** 全屏 */
   const fullscreen = () => {
     // DOM对象的一个属性:可以用来判断当前是不是全屏模式[全屏:true,不是全屏:false]

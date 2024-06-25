@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <SchemaForm></SchemaForm>
+    <!-- <SchemaForm></SchemaForm> -->
   </div>
 </template>
 

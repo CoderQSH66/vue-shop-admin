@@ -1,11 +1,14 @@
+import type { Rule } from 'ant-design-vue/es/form'
+
 export interface IFormType {
   props?: {
     layout?: 'horizontal' | 'vertical' | 'inline'
     labelAlign?: 'left' | 'right'
     size?: 'large' | 'middle' | 'small'
+    rules?: Record<string, Rule[]>
   }
-  gutter?: number | number[]
-  span?: number
+  gutter: any
+  span: number
 }
 
 export interface IFormOptionsType {
@@ -13,6 +16,7 @@ export interface IFormOptionsType {
   name: string
   label: string
   required: boolean
+  icon?: string
   props?: any
   options?: any[]
 }
@@ -20,4 +24,5 @@ export interface IFormOptionsType {
 export interface IFormPropsType {
   formOptions: IFormType
   formOptionsData: IFormOptionsType[]
+  formState: any
 }

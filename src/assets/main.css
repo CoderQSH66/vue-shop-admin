@@ -28,3 +28,7 @@
     }
   }
 }
+
+*::placeholder {
+  color: rgb(12, 12, 12) !important;
+}
