@@ -1,35 +1,45 @@
 <template>
   <Teleport to="body">
     <div class="global-drawer">
-      <a-drawer
-        :open="isOpenDrawer"
-        title="修改密码"
-        class="drawer-custom-class"
-        placement="right"
-        @close="isOpenDrawer = false"
-      >
+      <a-drawer class="global-drawer__drawer" v-bind="attrs">
+        <template v-for="(slot, slotName) of $slots" #[slotName]="slotData">
+          <slot :name="slotName" v-bind="slotData || {}"></slot>
+        </template>
       </a-drawer>
     </div>
   </Teleport>
 </template>
 
 <script setup lang="ts">
-  import { reactive, ref } from 'vue'
+  import { useAttrs, computed } from 'vue'
 
-  const formState = reactive({
-    oldpassword: '',
-    password: '',
-    repassword: ''
-  })
-  const isOpenDrawer = ref<boolean>(false)
-
-  const updatePassword = async () => {
-    // try {
-    //   await loginStore.asyncFetchChangePassword(formState)
-    // } catch (err) {
-    //   isOpenDrawer.value = false
-    // }
+  interface IDrawerPropsType {
+    open: boolean
+    title?: string
+    width?: number
+    closable?: boolean
+    placement?: 'top' | 'right' | 'bottom' | 'left'
+    headerStyle?: any
   }
+  const props = withDefaults(defineProps<IDrawerPropsType>(), {
+    title: '默认标题',
+    width: 375,
+    closable: true,
+    placement: 'right',
+    headerStyle: () => ({ padding: '24px' })
+  })
+  console.log(props)
+  // console.log(useAttrs())
+  const attrs = computed(() => {
+    return {
+      ...props,
+      ...useAttrs()
+    }
+  })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  :global(.global-drawer__drawer) {
+    // background-color: rebeccapurple !important;
+  }
+</style>

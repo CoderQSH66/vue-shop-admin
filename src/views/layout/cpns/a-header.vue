@@ -36,13 +36,7 @@
       </div>
     </div>
   </div>
-  <!-- <a-drawer
-    :open="isOpenDrawer"
-    title="修改密码"
-    class="drawer-custom-class"
-    placement="right"
-    @close="isOpenDrawer = false"
-  >
+  <global-drawer title="修改密码" :closable="false" :open="isOpenDrawer" @close="isOpenDrawer = false">
     <a-form :model="formState" :label-col="{ span: 24 }" :wrapper-col="{ span: 24 }">
       <a-form-item label="旧密码" required>
         <a-input v-model:value="formState.oldpassword" placeholder="请输入旧密码" allow-clear size="large">
@@ -72,24 +66,28 @@
         </div>
       </a-form-item>
     </a-form>
-  </a-drawer> -->
+  </global-drawer>
 </template>
 
 <script setup lang="ts">
-  import { ref, toRefs } from 'vue'
+  import { ref, toRefs, reactive } from 'vue'
   import { useRouter } from 'vue-router'
 
+  import { GlobalDrawer } from '@/components/global-drawer'
   import useLoginStore from '@/stores/login'
   import { local } from '@/utils/Storage'
 
-  const isOpenDrawer = ref<boolean>(false)
-
+  const router = useRouter()
   const loginStore = useLoginStore()
   const { userInfo } = toRefs(loginStore)
-  const router = useRouter()
   const isCollapsible = ref<boolean>(false)
   const isFull = ref<boolean>(false)
-
+  const isOpenDrawer = ref<boolean>(false)
+  const formState = reactive({
+    oldpassword: '',
+    password: '',
+    repassword: ''
+  })
   /** 全屏 */
   const fullscreen = () => {
     // DOM对象的一个属性:可以用来判断当前是不是全屏模式[全屏:true,不是全屏:false]
@@ -107,13 +105,13 @@
   }
 
   /** 修改密码 */
-  // const updatePassword = async () => {
-  //   try {
-  //     await loginStore.asyncFetchChangePassword(formState)
-  //   } catch (err) {
-  //     isOpenDrawer.value = false
-  //   }
-  // }
+  const updatePassword = async () => {
+    try {
+      await loginStore.asyncFetchChangePassword(formState)
+    } catch (err) {
+      isOpenDrawer.value = false
+    }
+  }
 
   /** 退出登录 */
   const logout = () => {

@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, reactive, toRefs, ref, watchEffect } from 'vue'
+  import { computed, reactive, toRefs, watchEffect, ref } from 'vue'
 
   import { EditSide } from '@/components/edit-side'
   import useMostlyStore from '@/stores/mostly'
