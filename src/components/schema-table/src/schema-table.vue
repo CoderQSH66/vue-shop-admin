@@ -1,6 +1,12 @@
 <template>
   <div class="schema-table">
-    <a-table :columns="columns" :data-source="dataSource" v-bind="tableOptions"></a-table>
+    <a-table :columns="columns" :data-source="dataSource" v-bind="tableOptions">
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.dataIndex === 'operate'">
+          <slot name="operation" :record="record"></slot>
+        </template>
+      </template>
+    </a-table>
   </div>
 </template>
 

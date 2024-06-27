@@ -5,12 +5,9 @@ export interface IPropTable {
   bordered?: boolean
   size?: 'middle' | 'small' | 'large'
 }
-export type IPropTableColumns = ColumnType & IExpand
-export interface IExpand {
-  operate?: boolean
-}
+export type IPropTableColumns = ColumnType<any>[]
 export interface IPropTableOptions {
-  columns: IPropTableColumns[]
+  columns: IPropTableColumns
   dataSource: any[]
   tableOptions?: IPropTable
 }

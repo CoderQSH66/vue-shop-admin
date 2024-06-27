@@ -13,7 +13,12 @@
         </a-tooltip>
       </template>
       <div class="table">
-        <!-- <schema-table></schema-table> -->
+        <schema-table :columns="columns" :dataSource="dataSource">
+          <template #operation="{ record }">
+            <a-button type="text" @click="onEdit(record)">编辑</a-button>
+            <a-button type="text" danger>删除</a-button>
+          </template>
+        </schema-table>
       </div>
     </global-card>
   </div>
@@ -22,6 +27,26 @@
 <script setup lang="ts">
   import { GlobalCard } from '@/components/global-card'
   import { SchemaTable } from '@/components/schema-table'
+
+  import { columns } from '../config/noticeSchema'
+
+  const dataSource = [
+    {
+      name: '公告1',
+      time: '2022-12-12 12:12:12'
+    },
+    {
+      name: '公告2',
+      time: '2022-12-12 12:12:12'
+    },
+    {
+      name: '公告3',
+      time: '2022-12-12 12:12:12'
+    }
+  ]
+  const onEdit = (item: any) => {
+    console.log(item)
+  }
 </script>
 
 <style lang="scss" scoped>
