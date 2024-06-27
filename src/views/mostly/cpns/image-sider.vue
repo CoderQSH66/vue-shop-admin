@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, reactive, toRefs, watchEffect, ref } from 'vue'
+  import { computed, reactive, toRefs, watchEffect, ref, watch } from 'vue'
 
   import { showModal } from '@/components/command-modal'
   import { EditSide } from '@/components/edit-side'
@@ -40,9 +40,14 @@
   /** 侦听页码的变化，获取数据 */
   watchEffect(async () => {
     await mostlyStore.asyncGetMostlyImageList(pagination.current, pagination.pageSize)
-    itemId.value = imageClassItem1.value.id as number
   })
-
+  watch(
+    () => imageClassItem1.value.id,
+    (value) => {
+      // console.log(value)
+      itemId.value = value as number
+    }
+  )
   const emits = defineEmits(['edit', 'remove', 'onclick'])
 
   const onEdit = (item: any) => {
@@ -57,17 +62,17 @@
     emits('onclick', item)
     mostlyStore.asyncGetImageList(itemId.value, 1)
   }
-  const onRemove = () => {
-    // console.log('删除', itemId.value)
+  const onRemove = (item: any) => {
+    // console.log('删除', item.id)
     const unmount = showModal({
       open: true,
       title: '确认删除该分类吗？',
       cancelText: '取消',
       okText: '确认',
       closable: true,
-      onOk() {
+      async onOk() {
         // console.log('ok')
-        mostlyStore.asyncDeleteImageCate(itemId.value)
+        await mostlyStore.asyncDeleteImageCate(item.id)
         mostlyStore.asyncGetMostlyImageList(pagination.current, pagination.pageSize)
 
         unmount()

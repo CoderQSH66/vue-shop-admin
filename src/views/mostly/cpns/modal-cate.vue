@@ -45,11 +45,11 @@
   }
 
   /** 更新分类 */
-  const updateCate = () => {
-    console.log(isUpdate.value)
+  const updateCate = async () => {
+    // console.log(isUpdate.value)
     isUpdate.value
-      ? mostlyStore.asyncUpdateImageCate(Item.value.id, formState)
-      : mostlyStore.asyncAddImageCate(formState)
+      ? await mostlyStore.asyncUpdateImageCate(Item.value.id, formState)
+      : await mostlyStore.asyncAddImageCate(formState)
     isOpenDrawer.value = false
     mostlyStore.asyncGetMostlyImageList(1)
   }

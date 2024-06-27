@@ -2,7 +2,15 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-import { getMostlyImageList, updateImageCate, deleteImageCate, addImageCate, getImageList } from '@/api'
+import {
+  getMostlyImageList,
+  updateImageCate,
+  deleteImageCate,
+  addImageCate,
+  getImageList,
+  deleteImage,
+  updateImageName
+} from '@/api'
 
 import type { IImageListType, ICateType, IImageList } from '@/types/mostly'
 
@@ -44,6 +52,14 @@ const useMostlyStore = defineStore('mostly', () => {
     imageList.value = res.data
     // console.log(res)
   }
+  const asyncDeleteImage = async (ids: number[]) => {
+    const res = await deleteImage(ids)
+    // console.log(res)
+  }
+  const asyncUpdateImageName = async (id: number, name: string) => {
+    const res = await updateImageName(id, name)
+    console.log(res)
+  }
   return {
     imageClassList,
     imageClassTotal,
@@ -55,7 +71,9 @@ const useMostlyStore = defineStore('mostly', () => {
     asyncUpdateImageCate,
     asyncDeleteImageCate,
     asyncAddImageCate,
-    asyncGetImageList
+    asyncGetImageList,
+    asyncDeleteImage,
+    asyncUpdateImageName
   }
 })
 

@@ -2,7 +2,7 @@
   <div class="image-main">
     <a-layout class="a-layout">
       <a-layout-header>
-        <image-header @add="onAdd"></image-header>
+        <image-header :itemId="itemId" @add="onAdd"></image-header>
       </a-layout-header>
       <a-layout>
         <a-layout-sider class="base-c" width="220">
