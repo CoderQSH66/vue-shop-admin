@@ -67,20 +67,12 @@
       </a-form-item>
     </a-form>
   </global-drawer> -->
-  <global-drawer :open="isOpenDrawer" @close="isOpenDrawer = false">
+  <global-drawer title="修改密码" :closable="false" :open="isOpenDrawer" @close="isOpenDrawer = false">
     <schema-form :formOptionsData="formOptionsData" :formOptions="formOptions" :formState="formState">
-      <template #operate="slotData">
+      <template #operate>
         <div class="operate w-full flex justify-around">
-          <a-button
-            type="primary"
-            @click="
-              () => {
-                console.log(slotData)
-              }
-            "
-            >确定</a-button
-          >
-          <a-button type="primary" danger>取消</a-button>
+          <a-button type="primary" @click="updatePassword">确定</a-button>
+          <a-button type="primary" @click="isOpenDrawer = false" danger>取消</a-button>
         </div>
       </template>
     </schema-form>
@@ -88,7 +80,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, toRefs, reactive, watch } from 'vue'
+  import { ref, toRefs, reactive } from 'vue'
   import { useRouter } from 'vue-router'
 
   import { GlobalDrawer } from '@/components/global-drawer'
@@ -104,18 +96,18 @@
   const isCollapsible = ref<boolean>(false)
   const isFull = ref<boolean>(false)
   const isOpenDrawer = ref<boolean>(false)
-  const formState = reactive({
-    oldpassword: '',
-    password: '',
-    repassword: ''
+  const _formState: any = {}
+  formOptionsData.forEach((item) => {
+    _formState[item.name] = ''
   })
-  watch(
-    formState,
-    () => {
-      console.log(formState)
-    },
-    { deep: true }
-  )
+  const formState = reactive(_formState)
+  // watch(
+  //   formState,
+  //   () => {
+  //     console.log(formState)
+  //   },
+  //   { deep: true }
+  // )
   /** 全屏 */
   const fullscreen = () => {
     // DOM对象的一个属性:可以用来判断当前是不是全屏模式[全屏:true,不是全屏:false]

@@ -9,6 +9,7 @@ export interface IFormType {
   }
   gutter: any
   span: number
+  operate?: boolean
 }
 
 export interface IFormOptionsType {

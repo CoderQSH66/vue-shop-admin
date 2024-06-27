@@ -32,3 +32,13 @@
 *::placeholder {
   color: rgb(12, 12, 12) !important;
 }
+
+.ant-modal-root {
+  .ant-modal-header {
+    .ant-modal-title {
+      font-size: 19px;
+
+      /* color: #b33c50; */
+    }
+  }
+}

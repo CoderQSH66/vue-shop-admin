@@ -8,12 +8,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-  const _s = defineSlots()
-  const defaultVnode = _s.default()[0]
-  defineExpose({
-    defaultVnode
-  })
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped></style>

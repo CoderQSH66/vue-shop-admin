@@ -48,8 +48,8 @@ class Request {
         return response
       },
       (error: any) => {
-        console.log(error)
-        $message.error(error.message)
+        // console.log(error)
+        $message.error(error.response.data.msg || this.UNKNOWN_ERROR)
         return Promise.reject(error)
       }
     )

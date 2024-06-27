@@ -4,14 +4,14 @@
       <template #extra>
         <div class="extra">
           <div class="edit">
-            <a-button type="text" @click="$emit('edit')">
+            <a-button type="text" @click.stop="$emit('edit')">
               <template #icon>
                 <div class="i-ant:edit-outlined w-20 h-20"></div>
               </template>
             </a-button>
           </div>
           <div class="remove">
-            <a-button type="text" @click="$emit('remove')">
+            <a-button type="text" @click.stop="$emit('remove')">
               <template #icon>
                 <div class="i-ant-delete-outlined w-20 h-20"></div>
               </template>

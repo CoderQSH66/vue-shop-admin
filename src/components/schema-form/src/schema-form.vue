@@ -8,10 +8,13 @@
               <!-- 输入框 -->
               <template v-if="item.type === 'input'">
                 <a-input v-model:value="formState[item.name]" v-bind="item.props">
-                  <template #prefix>
+                  <template v-if="item.icon" #prefix>
                     <i :class="`${item.icon} w-20 h-20`"></i>
                   </template>
                 </a-input>
+              </template>
+              <template v-if="item.type === 'input-number'">
+                <a-input-number v-model:value="formState[item.name]" v-bind="item.props"></a-input-number>
               </template>
               <!-- 下拉框 -->
               <template v-if="item.type === 'select'">
@@ -40,7 +43,15 @@
             </a-form-item>
           </a-col>
         </template>
-        <slot name="operate" :formState="formState"></slot>
+        <template v-if="formOptions.operate">
+          <slot name="operate" :formState="formState"></slot>
+        </template>
+        <template v-else>
+          <div class="operate w-full flex justify-around">
+            <a-button type="primary" @click="$emit('confirm')">确定</a-button>
+            <a-button type="primary" @click="$emit('cancel')" danger>取消</a-button>
+          </div>
+        </template>
       </a-row>
     </a-form>
   </div>
@@ -53,7 +64,7 @@
 
   const props = defineProps<IFormPropsType>()
   const { formOptions, formOptionsData, formState } = toRefs(props)
-  console.log(formOptions, formOptionsData, formState)
+  // console.log(formOptions, formOptionsData, formState)
 </script>
 
 <style lang="scss" scoped>

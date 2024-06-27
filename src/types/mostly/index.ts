@@ -8,3 +8,20 @@ export interface IImageClassType {
   list: IImageListType[]
   totalCount: number
 }
+export interface ICateType {
+  name: string
+  order: number
+}
+export interface ImageItem {
+  id: number
+  url: string
+  name: string
+  path: string
+  create_time: string
+  update_time: string
+  image_class_id: number
+}
+export interface IImageList {
+  list?: ImageItem[]
+  totalCount?: number
+}

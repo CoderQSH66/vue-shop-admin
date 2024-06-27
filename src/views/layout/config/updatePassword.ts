@@ -37,6 +37,7 @@ const formOptionsData: IFormOptionsType[] = [
 const formOptions: IFormType = {
   gutter: [24],
   span: 24,
+  operate: true,
   props: {
     size: 'large',
     rules: {
@@ -46,7 +47,7 @@ const formOptions: IFormType = {
       ],
       password: [{ required: true, message: '请输入新密码', trigger: 'blur' }],
       repassword: [
-        { required: true, message: '请输入原密码', trigger: 'blur' },
+        { required: true, message: '请再次输入新密码', trigger: 'blur' },
         { min: 3, max: 5, message: '两次密码不一致', trigger: 'change' }
       ]
     }

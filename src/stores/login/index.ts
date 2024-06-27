@@ -39,7 +39,11 @@ const useLoginStore = defineStore('login', () => {
     return res.data
   }
   const asyncFetchChangePassword = async (data: IUpdatePassword): Promise<any> => {
-    await changePassword(data)
+    try {
+      await changePassword(data)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return {

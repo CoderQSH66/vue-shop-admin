@@ -1,10 +1,12 @@
 <template>
-  <div class="app">
-    <RouterView></RouterView>
-  </div>
+  <a-config-provider :getPopupContainer="getPopupContainer" :locale="zhCN">
+    <div class="app">
+      <RouterView></RouterView></div
+  ></a-config-provider>
 </template>
 
 <script setup lang="ts">
+  import zhCN from 'ant-design-vue/es/locale/zh_CN'
   import { throttle } from 'underscore'
   import { watch } from 'vue'
   import { useRoute } from 'vue-router'
@@ -25,6 +27,15 @@
       })
     }
   )
+  /**
+   *  国际化
+   */
+  const getPopupContainer: any = (el: any, dialogContext: any) => {
+    if (dialogContext) {
+      return dialogContext.getDialogWrap()
+    }
+    return document.body
+  }
 </script>
 
 <style lang="scss" scoped></style>

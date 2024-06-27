@@ -7,7 +7,7 @@
             <edit-card
               :active="item.id === itemId"
               :title="item.name"
-              @edit="onEditImage"
+              @edit="onEditImage(item)"
               @remove="onRemoveImage"
             ></edit-card>
           </div>
@@ -36,13 +36,16 @@
   })
   const emits = defineEmits(['edit', 'remove', 'onclick'])
 
-  const onEditImage = () => {
-    emits('edit')
+  const onEditImage = (item: any) => {
+    emits('edit', item)
+    console.log(3)
   }
   const onRemoveImage = () => {
     emits('remove')
+    console.log(2)
   }
   const onClickClass = (item: any) => {
+    console.log(1)
     emits('onclick', item)
   }
 </script>
