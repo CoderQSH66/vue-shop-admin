@@ -1,6 +1,6 @@
 <template>
   <div class="schema-form">
-    <a-form :model="formState" :label-col="{ span: formOptions.span }" v-bind="formOptions.props">
+    <a-form ref="formRef" :model="formState" :label-col="{ span: formOptions.span }" v-bind="formOptions.props">
       <a-row :gutter="formOptions.gutter">
         <template v-for="item of formOptionsData" :key="item.name">
           <a-col :span="formOptions.span">
@@ -13,8 +13,14 @@
                   </template>
                 </a-input>
               </template>
-              <template v-if="item.type === 'input-number'">
+              <template v-else-if="item.type === 'input-number'">
                 <a-input-number v-model:value="formState[item.name]" v-bind="item.props"></a-input-number>
+              </template>
+              <template v-else-if="item.type === 'textarea'">
+                <a-textarea v-model:value="formState[item.name]" v-bind="item.props"></a-textarea>
+              </template>
+              <template v-else-if="item.type === 'password'">
+                <a-input-password v-model:value="formState[item.name]" v-bind="item.props"></a-input-password>
               </template>
               <!-- 下拉框 -->
               <template v-if="item.type === 'select'">
@@ -48,8 +54,8 @@
         </template>
         <template v-else>
           <div class="operate w-full flex justify-around">
-            <a-button type="primary" @click="$emit('confirm')">确定</a-button>
-            <a-button type="primary" @click="$emit('cancel')" danger>取消</a-button>
+            <a-button type="primary" size="large" @click="$emit('confirm')">确定</a-button>
+            <a-button type="primary" size="large" @click="$emit('cancel')" danger>取消</a-button>
           </div>
         </template>
       </a-row>
@@ -58,13 +64,19 @@
 </template>
 
 <script setup lang="ts">
-  import { toRefs } from 'vue'
+  import { toRefs, ref } from 'vue'
 
   import type { IFormPropsType } from './types'
+  import type { FormInstance } from 'ant-design-vue'
 
   const props = defineProps<IFormPropsType>()
   const { formOptions, formOptionsData, formState } = toRefs(props)
   // console.log(formOptions, formOptionsData, formState)
+  const formRef = ref<FormInstance>()
+
+  defineExpose({
+    formRef
+  })
 </script>
 
 <style lang="scss" scoped>

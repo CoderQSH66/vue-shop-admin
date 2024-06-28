@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-  import { h, onMounted, ref, toRefs } from 'vue'
+  import { h, ref, toRefs } from 'vue'
 
   import { GlobalCard } from '@/components/global-card'
   import useMostlyStore from '@/stores/mostly'

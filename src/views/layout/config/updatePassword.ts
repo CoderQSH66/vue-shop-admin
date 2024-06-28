@@ -2,7 +2,7 @@ import type { IFormOptionsType, IFormType } from '@/components/schema-form'
 
 const formOptionsData: IFormOptionsType[] = [
   {
-    type: 'input',
+    type: 'password',
     label: '旧密码',
     name: 'oldpassword',
     required: true,
@@ -12,7 +12,7 @@ const formOptionsData: IFormOptionsType[] = [
     }
   },
   {
-    type: 'input',
+    type: 'password',
     label: '新密码',
     name: 'password',
     required: true,
@@ -23,7 +23,7 @@ const formOptionsData: IFormOptionsType[] = [
     }
   },
   {
-    type: 'input',
+    type: 'password',
     label: '再次输入新密码',
     icon: 'i-ant-setting-outlined',
 

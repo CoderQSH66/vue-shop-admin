@@ -13,6 +13,7 @@ export interface IFormType {
 }
 
 export interface IFormOptionsType {
+  [key: string]: any
   type: string
   name: string
   label: string
