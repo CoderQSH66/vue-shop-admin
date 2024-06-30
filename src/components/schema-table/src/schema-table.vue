@@ -3,7 +3,16 @@
     <a-table :columns="columns" :data-source="dataSource" v-bind="tableOptions" :pagination="pagination">
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'operate'">
-          <slot name="operation" :record="record"></slot>
+          <slot name="operate" :record="record"></slot>
+        </template>
+        <template v-if="column.dataIndex === 'role'">
+          <slot name="role" :record="record"></slot>
+        </template>
+        <template v-if="column.dataIndex === 'username'">
+          <slot name="username" :record="record"></slot>
+        </template>
+        <template v-if="column.dataIndex === 'status'">
+          <slot name="status" :record="record"></slot>
         </template>
       </template>
     </a-table>

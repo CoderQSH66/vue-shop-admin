@@ -1,9 +1,9 @@
 <template>
   <div class="schema-form">
-    <a-form ref="formRef" :model="formState" :label-col="{ span: formOptions.span }" v-bind="formOptions.props">
-      <a-row :gutter="formOptions.gutter">
+    <a-form ref="formRef" :model="formState" :label-col="{ span: formOptions.labelSpan }" v-bind="formOptions.props">
+      <a-row :gutter="formOptions.gutterSpan">
         <template v-for="item of formOptionsData" :key="item.name">
-          <a-col :span="formOptions.span">
+          <a-col :span="formOptions.colSpan">
             <a-form-item :label="item.label" :name="item.name" :required="item.required">
               <!-- 输入框 -->
               <template v-if="item.type === 'input'">

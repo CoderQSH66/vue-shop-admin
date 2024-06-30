@@ -23,10 +23,11 @@ const formOptionsData: IFormOptionsType[] = [
   }
 ]
 const formOptions: IFormType = {
-  gutter: [24],
-  span: 24,
+  gutterSpan: [0, 24],
+  colSpan: 24,
   props: {
     size: 'large',
+    layout: 'horizontal',
     rules: {
       title: [{ required: true, message: '请公告标题', trigger: 'blur' }],
       content: [{ required: true, message: '请输入公告内容', trigger: 'blur' }]

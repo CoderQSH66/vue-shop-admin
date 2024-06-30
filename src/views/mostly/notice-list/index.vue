@@ -19,7 +19,7 @@
           :tableOptions="tableOptions"
           :pagination="pagination"
         >
-          <template #operation="{ record }">
+          <template #operate="{ record }">
             <a-button type="text" @click="onEdit(record)">编辑</a-button>
             <a-popconfirm title="是否要删除该公告?" ok-text="Yes" cancel-text="No" @confirm="onDelete(record)">
               <a-button type="text" danger>删除</a-button>

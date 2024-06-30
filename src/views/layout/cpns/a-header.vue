@@ -68,7 +68,12 @@
     </a-form>
   </global-drawer> -->
   <global-drawer title="修改密码" :closable="false" :open="isOpenDrawer" @close="isOpenDrawer = false">
-    <schema-form :formOptionsData="formOptionsData" :formOptions="formOptions" :formState="formState">
+    <schema-form
+      ref="schemaFormRef"
+      :formOptionsData="formOptionsData"
+      :formOptions="formOptions"
+      :formState="formState"
+    >
       <template #operate>
         <div class="operate w-full flex justify-around">
           <a-button type="primary" @click="updatePassword">确定</a-button>
@@ -101,6 +106,7 @@
     _formState[item.name] = ''
   })
   const formState = reactive(_formState)
+  const schemaFormRef = ref<InstanceType<typeof SchemaForm>>()
   // watch(
   //   formState,
   //   () => {
@@ -127,9 +133,11 @@
   /** 修改密码 */
   const updatePassword = async () => {
     try {
+      await schemaFormRef.value?.formRef?.validate()
       await loginStore.asyncFetchChangePassword(formState)
-    } catch (err) {
       isOpenDrawer.value = false
+    } catch (err) {
+      console.log(err)
     }
   }
 

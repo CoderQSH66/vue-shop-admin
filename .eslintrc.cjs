@@ -59,6 +59,7 @@ module.exports = {
     'import/no-cycle': 'off',
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
+    'vue/valid-v-model': 'off',
     // 导入模块的顺序规则
     'import/order': [
       'error',

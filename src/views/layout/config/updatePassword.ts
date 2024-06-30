@@ -35,11 +35,12 @@ const formOptionsData: IFormOptionsType[] = [
   }
 ]
 const formOptions: IFormType = {
-  gutter: [24],
-  span: 24,
+  gutterSpan: [24, 6],
+  colSpan: 24,
   operate: true,
   props: {
     size: 'large',
+    layout: 'vertical',
     rules: {
       oldpassword: [
         { required: true, message: '请输入原密码', trigger: 'blur' },

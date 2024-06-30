@@ -7,8 +7,9 @@ export interface IFormType {
     size?: 'large' | 'middle' | 'small'
     rules?: Record<string, Rule[]>
   }
-  gutter: any
-  span: number
+  gutterSpan?: any
+  colSpan?: number
+  labelSpan?: number
   operate?: boolean
 }
 
