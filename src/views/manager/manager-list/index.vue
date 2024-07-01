@@ -42,29 +42,30 @@
         </template>
       </schema-table>
     </div>
+    <edit-admin ref="editAdminRef"></edit-admin>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { toRefs } from 'vue'
-
   import { SchemaTable } from '@/components/schema-table'
   import useManagerStore from '@/stores/manager'
   import { notifyToast } from '@/utils/notificationToast'
 
-  import { columns, tableOptions } from '../config/managerList'
+  import { columns, tableOptions } from './config/managerList'
+  import EditAdmin from './cpns/edit-admin.vue'
 
   import type { IPagination } from '@/components/schema-table'
 
   const managerStore = useManagerStore()
   const { manageListData } = toRefs(managerStore)
+  const editAdminRef = ref<InstanceType<typeof EditAdmin>>()
 
   // 分页器
   const pagination: IPagination = {
     position: ['bottomCenter'],
     pageSizeOptions: [5, 10, 20, 30],
     showSizeChanger: true,
-    defaultPageSize: 5
+    defaultPageSize: 10
   }
   // 首次渲染列表数据
   managerStore.asyncGetManagerList()
@@ -72,6 +73,7 @@
   // 编辑
   const onEdit = (record: any) => {
     console.log(record)
+    editAdminRef?.value?.showDrawer()
   }
   // 删除
   const onDelete = (record: any) => {

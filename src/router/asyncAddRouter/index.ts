@@ -1,13 +1,14 @@
 import router from '..'
 
 const modules = import.meta.glob('@/views/**/*.vue')
+// console.log(modules)
 const getComponent = (path: string) => {
   path = path === '/' ? 'home-filled' : path.split('/').join('-').slice(1)
   // console.log(path)
   let component = null
   // eslint-disable-next-line no-restricted-syntax
   for (const [key, value] of Object.entries(modules)) {
-    if (key.includes(path)) {
+    if (key.includes(path) && !key.includes('cpns')) {
       component = value
       break
     }

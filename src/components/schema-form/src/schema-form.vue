@@ -46,6 +46,14 @@
               <template v-if="item.type === 'date'">
                 <a-date-picker v-model:value="formState[item.name]" v-bind="item.props" />
               </template>
+              <!-- switch开关 -->
+              <template v-if="item.type === 'switch'">
+                <a-switch v-model:checked="formState[item.name]" v-bind="item.props" />
+              </template>
+              <!-- 图片上传 -->
+              <template v-if="item.type === 'image-upload'">
+                <SelectImg></SelectImg>
+              </template>
             </a-form-item>
           </a-col>
         </template>
@@ -65,6 +73,8 @@
 
 <script setup lang="ts">
   import { toRefs, ref } from 'vue'
+
+  import SelectImg from '@/views/manager/manager-list/cpns/select-img.vue'
 
   import type { IFormPropsType } from './types'
   import type { FormInstance } from 'ant-design-vue'

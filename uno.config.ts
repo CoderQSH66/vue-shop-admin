@@ -23,6 +23,10 @@ export default defineConfig({
       collections: {
         ant: () => import('@iconify-json/ant-design/icons.json').then((i) => i.default),
         ep: () => import('@iconify-json/ep/icons.json').then((i) => i.default)
+      },
+      extraProperties: {
+        display: 'inline-block',
+        'vertical-align': 'middle'
       }
     })
   ],

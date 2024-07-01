@@ -18,6 +18,7 @@ export default defineConfig({
     // 自动导入API
     AutoImport({
       resolvers: [AntDesignVueResolver()],
+      imports: ['vue'],
       // 指定在types文件中
       dts: './types/auto-imports.d.ts'
     }),
