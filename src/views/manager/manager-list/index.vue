@@ -1,7 +1,9 @@
 <template>
   <div class="manager">
-    <div class="search">搜索</div>
-    <div class="operate">操作栏</div>
+    <!-- <div class="search">搜索</div> -->
+    <div class="operate">
+      <a-button type="primary" @click="onAdd">增加</a-button>
+    </div>
     <div class="manager-list">
       <schema-table
         :columns="columns"
@@ -72,12 +74,20 @@
 
   // 编辑
   const onEdit = (record: any) => {
-    console.log(record)
-    editAdminRef?.value?.showDrawer()
+    editAdminRef?.value?.showDrawer(true, record)
+  }
+  // 增加管理员
+  const onAdd = () => {
+    editAdminRef?.value?.showDrawer(false)
   }
   // 删除
-  const onDelete = (record: any) => {
-    console.log(record)
+  const onDelete = async (record: any) => {
+    await managerStore.asyncDeleteManager(record.id)
+    notifyToast('success', {
+      message: '删除成功',
+      duration: 2,
+      placement: 'topRight'
+    })
   }
   // 开关
   const onChange: any = async (checked: boolean, record: any) => {
@@ -106,6 +116,10 @@
     }
 
     .manager-list {
+      :deep(.ant-switch-checked) {
+        @apply bg-[--primary-color];
+      }
+
       .avatar {
         @apply flex items-center;
 

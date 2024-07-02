@@ -20,6 +20,7 @@ export interface ImageItem {
   create_time: string
   update_time: string
   image_class_id: number
+  isChecked?: boolean
 }
 export interface IImageList {
   list?: ImageItem[]

@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
 
-import { getManagerList, updateManagerStatus } from '@/api'
+import { getManagerList, updateManagerStatus, getRoleList, addManager, updateManager, deleteManager } from '@/api'
 
 import type { IManagerData } from '@/types/manager'
 
@@ -12,6 +12,12 @@ const useManagerStore = defineStore('manager', () => {
     roles: [],
     totalCount: 0
   })
+  const selectImage = ref<any>({})
+  const roleList = ref<any[]>([])
+  const totalCount = ref<number>(0)
+  const selectInjectImg = (image: any) => {
+    selectImage.value = image
+  }
   // actions
   const asyncGetManagerList = async (page: number = 1, limit: number = 9999, keyword: string = '') => {
     const res = await getManagerList(page, limit, keyword)
@@ -30,10 +36,38 @@ const useManagerStore = defineStore('manager', () => {
       return false
     }
   }
+  const asyncGetRoleList = async (page: number = 1) => {
+    const res = await getRoleList(page)
+    roleList.value?.push(...res.data.list)
+    totalCount.value = res.data.totalCount
+  }
+  // 增加管理员
+  const asyncAddManager = async (data: any) => {
+    const res = await addManager(data)
+    asyncGetManagerList()
+  }
+  // 修改管理员
+  const asyncUpdateManager = async (id: number, data: any) => {
+    const res = await updateManager(id, data)
+    asyncGetManagerList()
+  }
+  // 删除管理员
+  const asyncDeleteManager = async (id: number) => {
+    await deleteManager(id)
+    asyncGetManagerList()
+  }
   return {
     manageListData,
+    selectImage,
+    roleList,
+    totalCount,
     asyncGetManagerList,
-    asyncUpdateManagerStatus
+    asyncUpdateManagerStatus,
+    selectInjectImg,
+    asyncGetRoleList,
+    asyncAddManager,
+    asyncUpdateManager,
+    asyncDeleteManager
   }
 })
 

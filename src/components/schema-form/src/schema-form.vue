@@ -52,7 +52,9 @@
               </template>
               <!-- 图片上传 -->
               <template v-if="item.type === 'image-upload'">
-                <SelectImg></SelectImg>
+                <a-form-item-rest>
+                  <SelectImg v-model="formState[item.name]"></SelectImg>
+                </a-form-item-rest>
               </template>
             </a-form-item>
           </a-col>

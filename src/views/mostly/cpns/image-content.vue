@@ -27,6 +27,11 @@
                   </template>
                 </a-card-meta>
                 <template #actions>
+                  <a-checkbox
+                    v-if="isSelect"
+                    v-model:checked="image.isChecked"
+                    @change="onSelectImg($event, image)"
+                  ></a-checkbox>
                   <a-button size="small" type="text" @click="onRenameImg(image.id)">重命名</a-button>
                   <a-popconfirm
                     title="是否要删除该图片?"
@@ -61,8 +66,11 @@
   import { h, ref, toRefs } from 'vue'
 
   import { GlobalCard } from '@/components/global-card'
+  import useManagerStore from '@/stores/manager'
   import useMostlyStore from '@/stores/mostly'
 
+  const managerStore = useManagerStore()
+  const { selectImage } = toRefs(managerStore)
   const mostlyStore = useMostlyStore()
   const { imageList, isMainSpinning } = toRefs(mostlyStore)
   const current = ref<number>(1)
@@ -71,6 +79,10 @@
     itemId: {
       type: Number,
       default: 0
+    },
+    isSelect: {
+      type: Boolean,
+      default: false
     }
   })
   const { itemId } = toRefs(prop)
@@ -100,6 +112,15 @@
     imgId.value = -1
 
     mostlyStore.asyncGetImageList(itemId.value, current.value, pageSize.value)
+  }
+  const onSelectImg = (e: any, image: any) => {
+    imageList?.value?.list?.forEach((item: any) => {
+      item.isChecked = false
+    })
+    image.isChecked = e.target.checked
+    if (e.target.checked) {
+      managerStore.selectInjectImg(image)
+    }
   }
 </script>
 

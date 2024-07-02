@@ -16,29 +16,20 @@ const formOptionsData: IFormOptionsType[] = [
   {
     type: 'image-upload',
     label: '头像',
-    name: 'file',
+    name: 'avatar',
     required: false
   },
   {
     type: 'select',
     label: '角色',
-    name: 'role',
+    name: 'role_id',
     required: true,
-    options: [
-      {
-        label: '角色一',
-        value: '1'
-      },
-      {
-        label: '角色二',
-        value: '2'
-      }
-    ]
+    options: []
   },
   {
     type: 'switch',
     label: '状态',
-    name: 'sataus',
+    name: 'status',
     required: false
   }
 ]
@@ -50,7 +41,15 @@ const formOptions: IFormType = {
   operate: true,
   props: {
     layout: 'horizontal',
-    size: 'large'
+    size: 'large',
+    rules: {
+      username: [
+        { required: true, message: '请输入用户名', trigger: 'blur' },
+        { min: 3, max: 16, message: '请输入3~16位的用户名', trigger: 'change' }
+      ],
+      password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+      role_id: [{ required: true, message: '请选择角色', trigger: 'blur' }]
+    }
   }
 }
 

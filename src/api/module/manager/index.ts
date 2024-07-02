@@ -41,3 +41,64 @@ export const updateManagerStatus = (id: string, status: number) => {
     requestType: 'urlencoded'
   })
 }
+/**
+ * @description 添加管理员
+ * @param {object} data 请求body： username、password、role_id、status、avatar
+ * @returns {Promise<any>}
+ */
+export const addManager = (data: any) => {
+  return instance.request({
+    method: 'post',
+    url: '/admin/manager',
+    data,
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}
+
+/**
+ * @description 修改管理员
+ * @param { number } id 管理员id
+ * @param { any }    data 修改内容
+ * @returns {Promise<any>}
+ *
+ */
+export const updateManager = (id: number, data: any) => {
+  return instance.request({
+    method: 'post',
+    url: `/admin/manager/${id}`,
+    data,
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}
+
+/**
+ * @description 删除管理员
+ * @param { id }  管理员id
+ * @returns {Promise<any>}
+ *
+ */
+export const deleteManager = (id: number) => {
+  return instance.request({
+    method: 'post',
+    url: `/admin/manager/${id}/delete`,
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}
+
+/**
+ * @description 获取角色列表
+ * @param { number } page 页码
+ * @returns {Promise<any>}
+ *
+ */
+export const getRoleList = (page: number) => {
+  return instance.request({
+    method: 'get',
+    url: `/admin/role/${page}`,
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}

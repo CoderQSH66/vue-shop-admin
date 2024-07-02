@@ -9,7 +9,7 @@
           <image-sider @edit="onEdit" @onclick="onClick"></image-sider>
         </a-layout-sider>
         <a-layout-content class="base-c overflow-y-scroll">
-          <image-content :itemId="itemId"></image-content>
+          <image-content :isSelect="isSelect" :itemId="itemId"></image-content>
         </a-layout-content>
       </a-layout>
     </a-layout>
@@ -27,11 +27,17 @@
   import ImageSider from '../cpns/image-sider.vue'
   import modalCate from '../cpns/modal-cate.vue'
 
+  const props = defineProps({
+    isSelect: {
+      type: Boolean,
+      default: false
+    }
+  })
   const mostlyStore = useMostlyStore()
   const { imageClassItem1 } = toRefs(mostlyStore)
   const itemId = ref<number>(imageClassItem1.value.id ?? 168)
-
   const modalCateRef = ref<InstanceType<typeof modalCate>>()
+
   const onEdit = (item: any) => {
     modalCateRef.value?.showDrawer('修改分类', item)
   }
