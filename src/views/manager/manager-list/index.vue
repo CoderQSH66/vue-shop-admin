@@ -1,8 +1,8 @@
 <template>
   <div class="manager">
     <!-- <div class="search">搜索</div> -->
-    <div class="operate">
-      <a-button type="primary" @click="onAdd">增加</a-button>
+    <div class="operate p-20">
+      <a-button type="primary" size="large" @click="onAdd">添加管理员</a-button>
     </div>
     <div class="manager-list">
       <schema-table
@@ -69,6 +69,7 @@
     showSizeChanger: true,
     defaultPageSize: 10
   }
+
   // 首次渲染列表数据
   managerStore.asyncGetManagerList()
 
@@ -109,17 +110,13 @@
 
 <style lang="scss" scoped>
   .manager {
-    @apply w-full h-full bg-white;
+    @apply w-full bg-white;
 
     :deep(.ant-table-cell) {
       @apply p-10;
     }
 
     .manager-list {
-      :deep(.ant-switch-checked) {
-        @apply bg-[--primary-color];
-      }
-
       .avatar {
         @apply flex items-center;
 

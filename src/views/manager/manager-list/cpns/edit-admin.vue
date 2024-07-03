@@ -1,7 +1,13 @@
 <template>
   <Teleport to="body">
     <div class="edit-admin">
-      <global-drawer :width="550" :open="isOpenDrawer" @close="isOpenDrawer = false">
+      <global-drawer
+        :title="isEdit ? '修改管理员' : '新增管理员'"
+        :width="550"
+        :open="isOpenDrawer"
+        @close="isOpenDrawer = false"
+        :closable="false"
+      >
         <schema-form
           ref="schemaFormRef"
           :formOptionsData="_formOptionsData"

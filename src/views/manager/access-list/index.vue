@@ -1,5 +1,7 @@
 <template>
-  <div class="app">AppContent</div>
+  <div class="access-list">
+    <h2>AppContent</h2>
+  </div>
 </template>
 
 <script setup lang="ts"></script>
