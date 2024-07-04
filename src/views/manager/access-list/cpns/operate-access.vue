@@ -16,8 +16,9 @@
   import { GlobalDrawer } from '@/components/global-drawer'
   import { SchemaForm } from '@/components/schema-form'
 
-  import { formOptionsData, formOptions, formState } from '../config/editAdmin'
+  import { formOptionsData, formOptions, formState } from '../config/access-update'
 
+  console.log(formState)
   const isOpenDrawer = ref<boolean>(true)
   const title = ref<string>('')
 

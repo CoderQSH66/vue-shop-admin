@@ -10,7 +10,7 @@ const formOptionsData: IFormOptionsType[] = [
   {
     type: 'radio',
     label: '菜单/规则',
-    name: 'isMenu',
+    name: 'menu',
     required: false,
     props: {
       optionType: 'button',
@@ -98,6 +98,10 @@ const formOptions: IFormType = {
 const formState: any = {}
 
 formOptionsData.forEach((item) => {
+  if (item.name === 'menu') {
+    formState[item.name] = 1
+    return
+  }
   formState[item.name] = ''
 })
 
