@@ -2,7 +2,7 @@
   <div class="route-tag">
     <a-tabs
       v-model:activeKey="activeKey"
-      size="large"
+      size="middle"
       type="editable-card"
       :tabBarGutter="10"
       hideAdd

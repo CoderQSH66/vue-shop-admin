@@ -102,3 +102,16 @@ export const getRoleList = (page: number) => {
     requestType: 'urlencoded'
   })
 }
+
+/**
+ * @description 获取权限列表
+ * @returns {Promise<any>}
+ *
+ */
+export const getMenuRule = () => {
+  return instance.request({
+    url: '/admin/rule/1',
+    isRequestData: true,
+    requestType: 'form'
+  })
+}

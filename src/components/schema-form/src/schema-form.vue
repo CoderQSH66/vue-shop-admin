@@ -26,7 +26,10 @@
               <template v-if="item.type === 'select'">
                 <a-select v-model:value="formState[item.name]" v-bind="item.props">
                   <template v-for="option of item.options" :key="option.value">
-                    <a-select-option :value="option.value">{{ option.label }}</a-select-option>
+                    <a-select-option :value="option.value">
+                      <component :is="option.icon" class="w-20 h-20"></component>
+                      {{ option.label }}
+                    </a-select-option>
                   </template>
                 </a-select>
               </template>
@@ -37,6 +40,14 @@
                     <a-checkbox :value="option.value">{{ option.label }}</a-checkbox>
                   </template>
                 </a-checkbox-group>
+              </template>
+              <!-- 单选框 -->
+              <template v-if="item.type === 'radio'">
+                <a-radio-group v-bind="item.props" v-model:value="formState[item.name]">
+                  <template v-for="option of item.options" :key="option.value">
+                    <a-radio-button :value="option.value">{{ option.label }}</a-radio-button>
+                  </template>
+                </a-radio-group>
               </template>
               <!-- 时间选择器 -->
               <!-- value-format格式化提交时间 -->

@@ -24,7 +24,7 @@
   const props = withDefaults(defineProps<IDrawerPropsType>(), {
     title: '默认标题',
     width: 375,
-    closable: true,
+    closable: false,
     placement: 'right',
     headerStyle: () => ({ padding: '24px' })
   })
