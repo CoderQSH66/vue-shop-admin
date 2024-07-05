@@ -115,3 +115,36 @@ export const getMenuRule = () => {
     requestType: 'form'
   })
 }
+
+/**
+ * @description 添加菜单权限
+ * @param { object } data：权限相关
+ * @returns {Promise<any>}
+ *
+ */
+export const addMenuRules = (data: any) => {
+  return instance.request({
+    method: 'post',
+    url: '/admin/rule',
+    data,
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}
+
+/**
+ * @description 修改菜单权限
+ * @param { object } data：权限相关
+ * @param { number }  id: 菜单id
+ * @returns {Promise<any>}
+ *
+ */
+export const editMenuRules = (id: number, data: any) => {
+  return instance.request({
+    method: 'post',
+    url: `/admin/rule/${id}`,
+    data,
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}
