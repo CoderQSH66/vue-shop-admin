@@ -148,3 +148,15 @@ export const editMenuRules = (id: number, data: any) => {
     requestType: 'urlencoded'
   })
 }
+
+export const updateRuleStatus = (id: number, status: number) => {
+  return instance.request({
+    method: 'post',
+    url: `/admin/rule/${id}/update_status`,
+    data: {
+      status
+    },
+    isRequestData: true,
+    requestType: 'urlencoded'
+  })
+}

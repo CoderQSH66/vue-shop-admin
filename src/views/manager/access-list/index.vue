@@ -19,7 +19,12 @@
               </span>
             </div>
             <div class="right">
-              <a-switch @change="onChange($event)" v-model:checked="scoped.menu"></a-switch>
+              <a-switch
+                @change="onChange($event, scoped)"
+                checked-children="开"
+                un-checked-children="关"
+                :checked="Boolean(scoped.status)"
+              ></a-switch>
               <a-button size="small" type="text" color="blue-400" @click="onEdit">修改</a-button>
               <a-button size="small" type="text" color="blue-400" @click="onAdd">增加</a-button>
               <a-button size="small" type="text" color="blue-400">删除</a-button>
@@ -33,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-  import { getMenuRule } from '@/api'
+  import { getMenuRule, updateRuleStatus } from '@/api'
 
   import operateAccess from './cpns/operate-access.vue'
 
@@ -45,9 +50,10 @@
     treeData.value = res.data.list
   }
   asyncGetRuledata()
-  const onChange = (e: any) => {
+  const onChange = async (e: any, scoped: any) => {
     console.log(e)
-    e = !e
+    const res = await updateRuleStatus(scoped.id, Number(e))
+    scoped.status = Number(e)
   }
   // 编辑
   const onEdit = () => {
