@@ -14,19 +14,23 @@ export const componentsMap: any = {
 export interface IFormItem {
   name: string
   type: string
-  lable: string
+  label: string
   placeholder: string
+  required?: boolean
   rules?: Rule[]
   typeOfChild?: string
   childOptions?: any
   options?: any[]
+  slotName?: string
 }
 export interface ILayout {
   colSpan?: number
-  gutterSpan?: number[]
+  gutterSpan?: number | object
   labelSpan?: number
 }
 export interface IFormPropsType {
-  formProps: FormProps
+  formProps?: FormProps
+  formLayout?: ILayout
   formItems: IFormItem[]
+  formState: any
 }

@@ -1,9 +1,9 @@
 <template>
   <div class="dynamic-form">
-    <a-form :model="formState" :label-col="{ span: 6 }">
-      <a-row>
+    <a-form :model="formState" :label-col="{ span: formLayout.labelSpan }" v-bind="formProps">
+      <a-row :gutter="formLayout.gutterSpan">
         <template v-for="(item, index) of formItems" :key="index">
-          <a-col :span="8">
+          <a-col :span="formLayout.colSpan">
             <a-form-item :name="item.name" :label="item.label" :rules="item.rules">
               <template v-if="item.type === 'custom'">
                 <slot :name="item.slotName" v-bind="item"></slot>
@@ -28,25 +28,19 @@
 </template>
 
 <script setup lang="ts">
-  import { Input, Select, SelectOption, DatePicker, RangePicker, Cascader } from 'ant-design-vue'
+  import { type IFormPropsType, componentsMap } from './types'
 
-  import type { FormProps } from 'ant-design-vue'
-
-  export interface IpropsType {
-    formState: any
-    formItems: any[]
-  }
-  const componentsMap: {
-    [key: string]: any
-  } = {
-    Input,
-    Select,
-    SelectOption,
-    DatePicker,
-    RangePicker,
-    Cascader
-  }
-  const props = defineProps<IpropsType>()
+  const props = withDefaults(defineProps<IFormPropsType>(), {
+    formProps: () => ({
+      layout: 'horizontal',
+      size: 'large'
+    }),
+    formLayout: () => ({
+      labelSpan: 6,
+      colSpan: 24,
+      gutterSpan: [24, 12]
+    })
+  })
   const { formState, formItems } = toRefs(props)
 </script>
 

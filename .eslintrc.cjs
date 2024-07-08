@@ -60,6 +60,17 @@ module.exports = {
     'import/no-named-as-default': 'off',
     'import/no-named-as-default-member': 'off',
     'vue/valid-v-model': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: 'FunctionExpression',
+        message: 'Function expressions are not allowed.'
+      },
+      {
+        selector: "CallExpression[callee.name='setTimeout'][arguments.length!=2]",
+        message: 'setTimeout must always be invoked with two arguments.'
+      }
+    ],
     // 导入模块的顺序规则
     'import/order': [
       'error',

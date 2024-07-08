@@ -149,6 +149,13 @@ export const editMenuRules = (id: number, data: any) => {
   })
 }
 
+/**
+ * @description 修改菜单状态
+ * @param { number } id
+ * @param { number } status
+ * @returns {Promise<any>}
+ *
+ */
 export const updateRuleStatus = (id: number, status: number) => {
   return instance.request({
     method: 'post',
