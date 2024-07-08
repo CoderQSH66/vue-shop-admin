@@ -12,16 +12,18 @@ export const componentsMap: any = {
   Cascader
 }
 export interface IFormItem {
+  type: keyof typeof componentsMap
   name: string
-  type: string
   label: string
-  placeholder: string
+  placeholder?: string | string[]
   required?: boolean
   rules?: Rule[]
   typeOfChild?: string
   childOptions?: any
   options?: any[]
   slotName?: string
+  valueFormat?: string
+  multiple?: boolean
 }
 export interface ILayout {
   colSpan?: number

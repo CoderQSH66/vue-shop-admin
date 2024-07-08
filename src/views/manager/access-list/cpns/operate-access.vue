@@ -72,7 +72,8 @@
       _formState.value.status = 1
       console.log(_formState.value)
     } else {
-      schemaFormRef.value?.formRef?.resetFields()
+      schemaFormRef.value?.resetForm()
+      // console.log(_formState.value)
     }
     // _formState.value.rule_id = getIds(rulesData.value, scoped.id)
     // console.log(_formState.value.rule_id)

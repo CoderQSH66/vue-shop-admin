@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /**
  * 封装通用请求类Request
  */
@@ -44,7 +45,6 @@ class Request {
           $message.error(data.msg || this.UNKNOWN_ERROR)
           return Promise.reject(data.msg)
         }
-        $message.success(data.msg)
         return response
       },
       (error: any) => {
@@ -68,7 +68,7 @@ class Request {
       config = config.interceptors.requestSuccess(config as InternalAxiosRequestConfig)
     }
     return new Promise((reslove, reject) => {
-      const { isRequestData = false, requestType = 'json', ...rest } = config
+      const { isRequestData = false, isShowMessage = false, requestType = 'json', ...rest } = config
 
       const headers =
         requestType === 'form'
@@ -89,6 +89,10 @@ class Request {
           /** 自定义响应拦截 */
           if (config.interceptors?.responseSuccess) {
             res = config.interceptors.responseSuccess(res)
+          }
+
+          if (isShowMessage) {
+            $message.success(res.data.msg)
           }
           if (!isRequestData) {
             reslove(res)

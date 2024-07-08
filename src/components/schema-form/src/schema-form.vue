@@ -106,10 +106,12 @@
 
   const props = defineProps<IFormPropsType>()
   const { formOptions, formOptionsData, formState } = toRefs(props)
+
   // console.log(formOptions, formOptionsData, formState)
   const formRef = ref<FormInstance>()
+
   const resetForm = () => {
-    formRef.value?.resetFields()
+    formRef?.value?.resetFields()
   }
   const validForm = async () => {
     try {

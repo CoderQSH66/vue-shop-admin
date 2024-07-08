@@ -20,4 +20,6 @@ export interface InterceptorsRequestConfig<T = AxiosResponse> extends AxiosReque
   isRequestData?: boolean
   /** 设置请求头内容 */
   requestType?: 'urlencoded' | 'form' | 'json'
+  /** 是否提示 */
+  isShowMessage?: boolean
 }
