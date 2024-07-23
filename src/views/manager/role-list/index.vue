@@ -18,7 +18,7 @@
     sex: 1,
     date1: '',
     date2: [],
-    address: []
+    address: ['hangzhou']
   })
   const options = [
     {

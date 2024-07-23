@@ -1,11 +1,18 @@
 <template>
-  <a-config-provider :getPopupContainer="getPopupContainer" :locale="zhCN">
+  <a-config-provider
+    :getPopupContainer="getPopupContainer"
+    :locale="zhCN"
+    :theme="{
+      algorithm: theme.defaultAlgorithm
+    }"
+  >
     <div class="app">
       <RouterView></RouterView></div
   ></a-config-provider>
 </template>
 
 <script setup lang="ts">
+  import { theme } from 'ant-design-vue'
   import zhCN from 'ant-design-vue/es/locale/zh_CN'
   import { throttle } from 'underscore'
   import { watch } from 'vue'
