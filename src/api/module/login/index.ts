@@ -15,7 +15,8 @@ export const login = (data: ILoginRequest) => {
     data,
     isRequestData: true,
     requestType: 'urlencoded',
-    isShowMessage: true
+    isShowMessage: true,
+    successMessage: '登录成功'
   })
 }
 

@@ -68,7 +68,7 @@ class Request {
       config = config.interceptors.requestSuccess(config as InternalAxiosRequestConfig)
     }
     return new Promise((reslove, reject) => {
-      const { isRequestData = false, isShowMessage = false, requestType = 'json', ...rest } = config
+      const { isRequestData = false, isShowMessage = false, successMessage, requestType = 'json', ...rest } = config
 
       const headers =
         requestType === 'form'
@@ -92,7 +92,7 @@ class Request {
           }
 
           if (isShowMessage) {
-            $message.success(res.data.msg)
+            $message.success(successMessage || res.data.msg)
           }
           if (!isRequestData) {
             reslove(res)

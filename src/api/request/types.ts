@@ -22,4 +22,6 @@ export interface InterceptorsRequestConfig<T = AxiosResponse> extends AxiosReque
   requestType?: 'urlencoded' | 'form' | 'json'
   /** 是否提示 */
   isShowMessage?: boolean
+  /** 成功提示信息 */
+  successMessage?: string
 }
