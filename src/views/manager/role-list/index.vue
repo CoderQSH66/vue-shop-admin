@@ -1,6 +1,17 @@
 <template>
   <div class="app">
-    <DynamicForm :formState="formState" :formItems="formItems">
+    <DynamicForm
+      :formState="formState"
+      :formItems="formItems"
+      :formLayout="{
+        labelSpan: 6,
+        colSpan: 12,
+        gutterSpan: [0, 24]
+      }"
+      :formProps="{
+        layout: 'vertical'
+      }"
+    >
       <template #address="scoped">
         <a-cascader v-bind="scoped" v-model:value="formState[scoped.name]" :options="scoped.options"></a-cascader>
       </template>
@@ -10,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import { DynamicForm } from '@/components/dynamic-form'
+  import { DynamicForm, type IFormItem } from '@/components/dynamic-form'
 
   const formState = reactive({
     username: '',
@@ -54,12 +65,12 @@
       ]
     }
   ]
-  const formItems = reactive([
+  const formItems = reactive<IFormItem[]>([
     {
       name: 'username',
+      type: 'Input',
       label: '用户名',
       placeholder: '请输入用户名',
-      type: 'Input',
       rules: [{ required: true, message: '请输入用户名', trigger: 'blur' }]
     },
     {

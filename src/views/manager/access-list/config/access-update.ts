@@ -2,10 +2,22 @@ import type { IFormOptionsType, IFormType } from '@/components/schema-form'
 
 const formOptionsData: IFormOptionsType[] = [
   {
-    type: 'select',
+    type: 'cascader',
     label: '上级菜单',
     name: 'rule_id',
-    required: true
+    required: true,
+    props: {
+      options: [],
+      placeholder: '请选择上级菜单',
+      'field-names': {
+        label: 'name',
+        value: 'id',
+        children: 'child'
+      },
+      'change-on-select': true,
+      showCheckedStrategy: 'Cascader.SHOW_CHILD',
+      size: 'large'
+    }
   },
   {
     type: 'radio',
@@ -37,10 +49,23 @@ const formOptionsData: IFormOptionsType[] = [
     }
   },
   {
+    type: 'input-number',
+    label: '排序',
+    name: 'order',
+    required: false
+  }
+]
+
+const formOptionsMenu1: IFormOptionsType[] = [
+  {
     type: 'select',
     label: '菜单图标',
     name: 'icon',
     required: false,
+    props: {
+      placeholder: '请选择图标',
+      showSearch: true
+    },
     options: [
       {
         label: '图标1',
@@ -57,7 +82,9 @@ const formOptionsData: IFormOptionsType[] = [
     props: {
       placeholder: '请输入路由'
     }
-  },
+  }
+]
+const formOptionsMenu2: IFormOptionsType[] = [
   {
     type: 'input',
     label: '后端规则',
@@ -75,12 +102,6 @@ const formOptionsData: IFormOptionsType[] = [
     props: {
       placeholder: '请输入请求方式'
     }
-  },
-  {
-    type: 'input-number',
-    label: '排序',
-    name: 'order',
-    required: false
   }
 ]
 
@@ -91,7 +112,16 @@ const formOptions: IFormType = {
   operate: true,
   props: {
     layout: 'horizontal',
-    size: 'large'
+    size: 'large',
+    rules: {
+      condition: [
+        {
+          required: true,
+          message: '请输入后端规则',
+          trigger: 'blur'
+        }
+      ]
+    }
   }
 }
 
@@ -102,7 +132,17 @@ formOptionsData.forEach((item) => {
     formState[item.name] = 1
     return
   }
+  if (item.name === 'order') {
+    formState[item.name] = 50
+    return
+  }
+  formState[item.name] = ''
+})
+formOptionsMenu1.forEach((item) => {
+  formState[item.name] = ''
+})
+formOptionsMenu2.forEach((item) => {
   formState[item.name] = ''
 })
 
-export { formOptionsData, formOptions, formState }
+export { formOptionsData, formOptionsMenu1, formOptionsMenu2, formOptions, formState }

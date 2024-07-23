@@ -27,8 +27,12 @@
                 <a-select v-model:value="formState[item.name]" v-bind="item.props">
                   <template v-for="option of item.options" :key="option.value">
                     <a-select-option :value="option.value">
-                      <component :is="option.icon" class="w-20 h-20"></component>
-                      {{ option.label }}
+                      <div class="ctx flex justify-start items-center">
+                        <component :is="option.label" class="w-20 h-20 relative top-2"></component>
+                        <span class="p-l-10">
+                          {{ option.label }}
+                        </span>
+                      </div>
                     </a-select-option>
                   </template>
                 </a-select>
@@ -67,6 +71,14 @@
                   <SelectImg v-model="formState[item.name]"></SelectImg>
                 </a-form-item-rest>
               </template>
+              <!-- 级联选择 -->
+              <template v-if="item.type === 'cascader'">
+                <a-cascader
+                  v-model:value="formState[item.name]"
+                  v-bind="item.props"
+                  :dropdownStyle="{ maxHeight: '400px', width: '30%' }"
+                ></a-cascader>
+              </template>
             </a-form-item>
           </a-col>
         </template>
@@ -94,11 +106,26 @@
 
   const props = defineProps<IFormPropsType>()
   const { formOptions, formOptionsData, formState } = toRefs(props)
+
   // console.log(formOptions, formOptionsData, formState)
   const formRef = ref<FormInstance>()
 
+  const resetForm = () => {
+    formRef?.value?.resetFields()
+  }
+  const validForm = async () => {
+    try {
+      const valid = await formRef.value?.validate()
+      return valid
+    } catch (error) {
+      return false
+    }
+  }
+
   defineExpose({
-    formRef
+    formRef,
+    resetForm,
+    validForm
   })
 </script>
 

@@ -9,6 +9,7 @@
     "types",
     "src"
   ],
+
   "compilerOptions": {
     "composite": true,
     "noEmit": true,
